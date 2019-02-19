@@ -54,11 +54,22 @@ void	percent_ho(va_list ap)
 
 size_t		percent_hh(const char *str, va_list ap, size_t i, size_t j)
 {
+	if (str[i + 3] == 'd' || str[i + 3] == 'i')
+		{
+			ft_putnbrc((char)va_arg(ap, int));
+			j = i + 4;
+		}
+}
+
+size_t		percent_hX(const char *str, va_list ap, size_t i, size_t j)
+{
 	if (str[i + 2] == 'X')
 	{
 		hexa_up_us((unsigned short)va_arg(ap, int));
 		j = i + 3;
 	}
+	if (str[i+ 2] == 'h')
+		j = percent_hh(str, ap, i, j);
 	return (j);
 }
 
@@ -84,6 +95,6 @@ size_t		percent_h(const char *str, va_list ap, size_t i, size_t j)
 		hexa_low_us((unsigned short)va_arg(ap, int));
 		j = i + 3;
 	}
-	j = percent_hh(str, ap, i, j);
+	j = percent_hX(str, ap, i, j);
 	return (j);
 }

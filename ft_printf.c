@@ -98,11 +98,11 @@ int		ft_printf(const char *str, ...)
 int		main(void)
 {
 	char			*s;
-	short i;
-	i = 128;
+	int 			i;
+	i = -10;
 	s = ft_strdup("");
-	printf("Le vrai PRINTF : Le pourcentage u = %u le pourcentage d = %hhd le pourcentage i = %i le pourcentage o = %o le pourcentage x = %x le pourcentage X = %X\n", i, i, i, i, i, i);
-	ft_printf("Mon PRINTF :     Le pourcentage u = %u le pourcentage d = %d le pourcentage i = %i le pourcentage o = %o le pourcentage x = %x le pourcentage X = %X\n", i, i, i, i, i, i);
+	printf("Le vrai PRINTF : Le pourcentage u = %u le pourcentage d = %hhd le pourcentage i = %hhi le pourcentage o = %hho le pourcentage x = %x le pourcentage X = %X\n", i, i, i, i, i, i);
+	ft_printf("Mon PRINTF :     Le pourcentage u = %u le pourcentage d = %hhd le pourcentage i = %hhi le pourcentage o = %o le pourcentage x = %x le pourcentage X = %X\n", i, i, i, i, i, i);
 	free(s);
 	return (0);
 }
