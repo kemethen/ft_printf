@@ -59,6 +59,22 @@ size_t		percent_hh(const char *str, va_list ap, size_t i, size_t j)
 			ft_putnbrc((char)va_arg(ap, int));
 			j = i + 4;
 		}
+	if (str[i + 3] == 'o')
+	{
+		percent_hho(ap);
+		j = i + 4;
+ 	}
+	if (str[i + 3] == 'x')
+	{
+		hexa_low_uc((unsigned char)va_arg(ap, int));
+		j = i + 4;
+	}
+	if (str[i + 3] == 'X')
+	{
+		hexa_up_uc((unsigned char)va_arg(ap, int));
+		j = i + 4;
+	}
+	return (j);
 }
 
 size_t		percent_hX(const char *str, va_list ap, size_t i, size_t j)
@@ -68,7 +84,7 @@ size_t		percent_hX(const char *str, va_list ap, size_t i, size_t j)
 		hexa_up_us((unsigned short)va_arg(ap, int));
 		j = i + 3;
 	}
-	if (str[i+ 2] == 'h')
+	if (str[i + 2] == 'h')
 		j = percent_hh(str, ap, i, j);
 	return (j);
 }

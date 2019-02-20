@@ -53,7 +53,7 @@ void	percent_o(va_list ap)
 	}
 	tmp = 0;
 	i = 0;
-	str = ft_strnew(mbase_eight(value) + i);
+	str = ft_strnew(mbase_eight(value));
 	while (value != 0)
 	{
 		tmp = value % 8;

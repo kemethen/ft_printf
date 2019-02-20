@@ -23,15 +23,18 @@ typedef struct	s_var
 	char	*str;
 }				t_var;
 
-int		ft_printf(const char *str, ...);
-void	percent_p(va_list ap);
-void	percent_o(va_list ap);
-void	percent_u(va_list ap);
-void	hexa_pointer(unsigned long value);
-void	hexa_up(unsigned int value);
-void	hexa_low(unsigned int value);
+int			ft_printf(const char *str, ...);
+void		percent_p(va_list ap);
+void		percent_o(va_list ap);
+void		percent_u(va_list ap);
+void		hexa_pointer(unsigned long value);
+void		hexa_up(unsigned int value);
+void		hexa_low(unsigned int value);
 size_t	percent_h(const char *str, va_list ap, size_t i, size_t j);
-void	hexa_low_us(unsigned short value);
-void	hexa_up_us(unsigned short value);
+void		hexa_low_us(unsigned short value);
+void		hexa_up_us(unsigned short value);
+void 		percent_hho(va_list ap);
+void		hexa_low_uc(unsigned char value);
+void		hexa_up_uc(unsigned char value);
 
 #endif
