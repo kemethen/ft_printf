@@ -36,5 +36,8 @@ void		hexa_up_us(unsigned short value);
 void 		percent_hho(va_list ap);
 void		hexa_low_uc(unsigned char value);
 void		hexa_up_uc(unsigned char value);
+size_t  percent_l(char const *str, va_list ap, size_t i, size_t j);
+void		hexa_low_ul(unsigned long value);
+void		hexa_up_ul(unsigned long value);
 
 #endif

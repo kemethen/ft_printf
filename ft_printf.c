@@ -27,6 +27,8 @@ size_t	check3(const char *str, va_list ap, size_t i, size_t j)
 	}
 	if (str[i + 1] == 'h')
 		j = percent_h(str, ap, i, j);
+	j = percent_l(str, ap, i, j);
+//	j = percent_f(str, ap, i, j);
 	return (j);
 }
 
@@ -98,11 +100,11 @@ int		ft_printf(const char *str, ...)
 int		main(void)
 {
 	char			*s;
-	long int 			i;
-	i = -9223372036854775808;
+	float i;
+	i = 100;
 	s = ft_strdup("");
-	printf("Le vrai PRINTF : Le pourcentage u = %lu le pourcentage d = %ld le pourcentage i = %li le pourcentage o = %lo le pourcentage x = %lx le pourcentage X = %lX\n", i, i, i, i, i, i);
-	ft_printf("Mon PRINTF :     Le pourcentage u = %u le pourcentage d = %hhd le pourcentage i = %hhi le pourcentage o = %o le pourcentage x = %hhx le pourcentage X = %hhX\n", i, i, i, i, i, i);
+	printf("Le vrai PRINTF : Le pourcentage f = %.1500f\n", i);
+	ft_printf("Mon PRINTF :     Le pourcentage f = \n");
 	free(s);
 	return (0);
 }

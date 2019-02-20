@@ -85,7 +85,14 @@ size_t		percent_hX(const char *str, va_list ap, size_t i, size_t j)
 		j = i + 3;
 	}
 	if (str[i + 2] == 'h')
+	{
+		if (str[i + 3] == 'u')
+		{
+			ft_putnbruc((unsigned char)va_arg(ap, int));
+			j = i + 4;
+		}
 		j = percent_hh(str, ap, i, j);
+	}
 	return (j);
 }
 
