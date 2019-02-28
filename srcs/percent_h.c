@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:40:42 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/21 10:32:07 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:42:20 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	percent_ho(va_list ap)
 			str[i] = tmp2 + 48;
 		else
 			str[i] = tmp2 + 87;
-		i++;
+		++i;
 		tmp1 /= 8;
 	}
 	ft_putstr(ft_strrev(str));

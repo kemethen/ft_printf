@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_u.c                                        :+:      :+:    :+:   */
+/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/16 15:41:41 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/27 18:19:06 by kemethen         ###   ########.fr       */
+/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
+/*   Updated: 2019/02/27 17:36:34 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_u(unsigned int nb, t_var *v)
+void	percent_d_and_i(int nb, t_var *v)
 {
-	v->str = ft_uitoa(nb);
+	v->str = ft_itoa(nb);
 	v->buff = fillbuff(v);
 }

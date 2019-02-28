@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:36:31 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/21 10:37:19 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:08:09 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	mbase_eight(unsigned long n)
 	return (j);
 }
 
-void	percent_o(unsigned int value)
+void	percent_o(unsigned int value, t_var *v)
 {
 	char	*str;
 	int		i;
@@ -62,11 +62,11 @@ void	percent_o(unsigned int value)
 		i++;
 		value /= 8;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }
 
-void	hexa_pointer(unsigned long value)
+char	*hexa_pointer(unsigned long value)
 {
 	char	*str;
 	char	*ptr;
@@ -76,7 +76,7 @@ void	hexa_pointer(unsigned long value)
 	if (value == 0)
 	{
 		ft_putnbr(0);
-		return ;
+		return (NULL);
 	}
 	str = ft_strnew(msize_hexa_ptr(value) + 1);
 	i = 0;
@@ -92,14 +92,14 @@ void	hexa_pointer(unsigned long value)
 	}
 	ptr = ft_strjoin("0x", ft_strrev(str));
 	free(str);
-	ft_putstr(ptr);
-	free(ptr);
+	return (ptr);
 }
 
-void	percent_p(va_list ap)
+void	percent_p(va_list ap, t_var *v)
 {
 	unsigned long	value;
 
 	value = va_arg(ap, unsigned long);
-	hexa_pointer(value);
+	v->str = hexa_pointer(value);
+	v->buff = fillbuff(v);
 }
