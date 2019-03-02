@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_c_and_s.c                                  :+:      :+:    :+:   */
+/*   percent_percent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 14:40:35 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/02 11:00:33 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/02 15:06:01 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/02 17:38:50 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	percent_s(t_var *v, char *str, size_t i, size_t j)
+void	percent_percent(t_var *v)
 {
-	v->str = ft_strdup(str);
-	v->buff = fillbuff(v);
-	j = i + 2;
-	return (j);
-}
+	char	*tmp;
 
-size_t	percent_c(t_var *v, char c, size_t i, size_t j)
-{
+	if (v->str)
+	{
+		tmp = ft_strdup(v->str);
+		ft_putstr("Dans tmp il y a ");
+		ft_putstr(tmp);
+		ft_putchar('\n');
+		free(v->str);
+	}
 	v->str = ft_strnew(1);
-	v->str[0] = c;
+	v->str[0] = '%';
 	v->buff = fillbuff(v);
-	j = i + 2;
-	return (j);
 }

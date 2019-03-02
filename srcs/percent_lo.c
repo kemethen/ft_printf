@@ -1,30 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_c_and_s.c                                  :+:      :+:    :+:   */
+/*   percent_lo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 14:40:35 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/02 11:00:33 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/02 14:57:51 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/02 14:58:42 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	percent_s(t_var *v, char *str, size_t i, size_t j)
+size_t	mbase_eight_ll(long long n)
 {
-	v->str = ft_strdup(str);
-	v->buff = fillbuff(v);
-	j = i + 2;
+	size_t	j;
+
+	j = 0;
+	while (n != 0)
+	{
+		n = n / 8;
+		++j;
+	}
 	return (j);
 }
 
-size_t	percent_c(t_var *v, char c, size_t i, size_t j)
+void	percent_lo(long long value, t_var *v)
 {
-	v->str = ft_strnew(1);
-	v->str[0] = c;
+	char	*str;
+	int		i;
+	int		tmp;
+
+	str = ft_strnew(mbase_eight_ll(value));
+	if (value == 0)
+		str[0] = '0';
+	tmp = 0;
+	i = 0;
+	while (value != 0)
+	{
+		tmp = value % 8;
+		if (tmp < 10)
+			str[i] = tmp + 48;
+		else
+			str[i] = tmp + 87;
+		i++;
+		value /= 8;
+	}
+	v->str = ft_strrev(str);
 	v->buff = fillbuff(v);
-	j = i + 2;
-	return (j);
 }

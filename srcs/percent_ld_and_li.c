@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_c_and_s.c                                  :+:      :+:    :+:   */
+/*   percent_ld_and_li.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 14:40:35 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/02 11:00:33 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/02 14:51:08 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/02 14:55:11 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	percent_s(t_var *v, char *str, size_t i, size_t j)
+void	percent_ld_and_li(long long nb, t_var *v)
 {
-	v->str = ft_strdup(str);
+	v->str = ft_lltoa(nb);
 	v->buff = fillbuff(v);
-	j = i + 2;
-	return (j);
-}
-
-size_t	percent_c(t_var *v, char c, size_t i, size_t j)
-{
-	v->str = ft_strnew(1);
-	v->str[0] = c;
-	v->buff = fillbuff(v);
-	j = i + 2;
-	return (j);
 }

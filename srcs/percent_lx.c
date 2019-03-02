@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/21 09:58:14 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:02:21 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,15 @@ int		msize_hexa_ul(unsigned long n)
 	return (i);
 }
 
-void	hexa_up_ul(unsigned long value)
+void	hexa_up_ul(unsigned long value, t_var *v)
 {
-	char	*str;
-	int		i;
-	int		tmp;
+	char		*str;
+	int			i;
+	long long	tmp;
 
-	if (value == 0)
-	{
-		ft_putnbr(0);
-		return ;
-	}
 	str = ft_strnew(msize_hexa_ul(value) + 1);
+	if (value == 0)
+		str[0] = '0';
 	i = 0;
 	while (value != 0)
 	{
@@ -48,22 +45,19 @@ void	hexa_up_ul(unsigned long value)
 		++i;
 		value /= 16;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }
 
-void	hexa_low_ul(unsigned long value)
+void	hexa_low_ul(unsigned long value, t_var *v)
 {
-	char	*str;
-	int		i;
-	int		tmp;
+	char		*str;
+	int			i;
+	long long	tmp;
 
-	if (value == 0)
-	{
-		ft_putnbr(0);
-		return ;
-	}
 	str = ft_strnew(msize_hexa_ul(value) + 1);
+	if (value == 0)
+		str[0] = '0';
 	i = 0;
 	while (value != 0)
 	{
@@ -75,6 +69,6 @@ void	hexa_low_ul(unsigned long value)
 		++i;
 		value /= 16;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }

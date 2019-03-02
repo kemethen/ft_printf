@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:40:42 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/27 14:42:20 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/02 14:32:10 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	mbase_eight_us(unsigned short n)
 
 	j = 0;
 	if (n == 0)
-		ft_putnbr(0);
+		return (1);
 	while (n != 0)
 	{
 		n = n / 8;
@@ -27,7 +27,7 @@ size_t	mbase_eight_us(unsigned short n)
 	return (j);
 }
 
-void	percent_ho(va_list ap)
+void	percent_ho(va_list ap, t_var *v)
 {
 	char			*str;
 	int				i;
@@ -37,7 +37,9 @@ void	percent_ho(va_list ap)
 	tmp1 = (unsigned short)va_arg(ap, int);
 	tmp2 = 0;
 	i = 0;
-	str = ft_strnew(mbase_eight_us(tmp1) + i);
+	str = ft_strnew(mbase_eight_us(tmp1));
+	if (tmp1 == 0)
+		str[0] = '0';
 	while (tmp1 != 0)
 	{
 		tmp2 = tmp1 % 8;
@@ -48,76 +50,76 @@ void	percent_ho(va_list ap)
 		++i;
 		tmp1 /= 8;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }
 
-size_t	percent_hh(const char *str, va_list ap, size_t i, size_t j)
+size_t	percent_hh(const char *str, va_list ap, t_var *v)
 {
-	if (str[i + 3] == 'd' || str[i + 3] == 'i')
+	if (str[v->i + 3] == 'd' || str[v->i + 3] == 'i')
 	{
-		ft_putnbrc((char)va_arg(ap, int));
-		j = i + 4;
+		percent_d_and_i((char)va_arg(ap, int), v);
+		v->j = v->i + 4;
 	}
-	if (str[i + 3] == 'o')
+	if (str[v->i + 3] == 'o')
 	{
-		percent_hho((unsigned char)va_arg(ap, int));
-		j = i + 4;
+		percent_o((unsigned char)va_arg(ap, int), v);
+		v->j = v->i + 4;
 	}
-	if (str[i + 3] == 'x')
+	if (str[v->i + 3] == 'x')
 	{
-		hexa_low_uc((unsigned char)va_arg(ap, int));
-		j = i + 4;
+		hexa_low((unsigned char)va_arg(ap, int), v);
+		v->j = v->i + 4;
 	}
-	if (str[i + 3] == 'X')
+	if (str[v->i + 3] == 'X')
 	{
-		hexa_up_uc((unsigned char)va_arg(ap, int));
-		j = i + 4;
+		hexa_up((unsigned char)va_arg(ap, int), v);
+		v->j = v->i + 4;
 	}
-	return (j);
+	return (v->j);
 }
 
-size_t	percent_hx(const char *str, va_list ap, size_t i, size_t j)
+size_t	percent_hx(const char *str, va_list ap, t_var *v)
 {
-	if (str[i + 2] == 'X')
+	if (str[v->i + 2] == 'X')
 	{
-		hexa_up_us((unsigned short)va_arg(ap, int));
-		j = i + 3;
+		hexa_up((unsigned short)va_arg(ap, int), v);
+		v->j = v->i + 3;
 	}
-	if (str[i + 2] == 'h')
+	if (str[v->i + 2] == 'h')
 	{
-		if (str[i + 3] == 'u')
+		if (str[v->i + 3] == 'u')
 		{
-			ft_putnbruc((unsigned char)va_arg(ap, int));
-			j = i + 4;
+			percent_d_and_i((unsigned char)va_arg(ap, int), v);
+			v->j = v->i + 4;
 		}
-		j = percent_hh(str, ap, i, j);
+		v->j = percent_hh(str, ap, v);
 	}
-	return (j);
+	return (v->j);
 }
 
-size_t	percent_h(const char *str, va_list ap, size_t i, size_t j)
+size_t	percent_h(const char *str, va_list ap, t_var *v)
 {
-	if (str[i + 2] == 'd' || str[i + 2] == 'i')
+	if (str[v->i + 2] == 'd' || str[v->i + 2] == 'i')
 	{
-		ft_putnbrs((short)va_arg(ap, int));
-		j = i + 3;
+		percent_d_and_i((short)va_arg(ap, int), v);
+		v->j = v->i + 3;
 	}
-	if (str[i + 2] == 'o')
+	if (str[v->i + 2] == 'o')
 	{
-		percent_ho(ap);
-		j = i + 3;
+		percent_o((unsigned short)va_arg(ap, int), v);
+		v->j = v->i + 3;
 	}
-	if (str[i + 2] == 'u')
+	if (str[v->i + 2] == 'u')
 	{
-		ft_putnbrus((unsigned short)va_arg(ap, int));
-		j = i + 3;
+		percent_d_and_i((unsigned short)va_arg(ap, int), v);
+		v->j = v->i + 3;
 	}
-	if (str[i + 2] == 'x')
+	if (str[v->i + 2] == 'x')
 	{
-		hexa_low_us((unsigned short)va_arg(ap, int));
-		j = i + 3;
+		hexa_low((unsigned short)va_arg(ap, int), v);
+		v->j = v->i + 3;
 	}
-	j = percent_hx(str, ap, i, j);
-	return (j);
+	v->j = percent_hx(str, ap, v);
+	return (v->j);
 }

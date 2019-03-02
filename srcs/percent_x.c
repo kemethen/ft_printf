@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_X.c                                        :+:      :+:    :+:   */
+/*   percent_x.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:05:46 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/18 17:29:50 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/02 14:24:37 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,15 @@ int		msize_hexa_int(unsigned int n)
 	return (i);
 }
 
-void	hexa_up(unsigned int value)
+void	hexa_up(unsigned int value, t_var *v)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	if (value == 0)
-	{
-		ft_putnbr(0);
-		return ;
-	}
 	str = ft_strnew(msize_hexa_int(value) + 1);
+	if (value == 0)
+		str[0] = '0';
 	i = 0;
 	while (value != 0)
 	{
@@ -48,22 +45,19 @@ void	hexa_up(unsigned int value)
 		++i;
 		value /= 16;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }
 
-void	hexa_low(unsigned int value)
+void	hexa_low(unsigned int value, t_var *v)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	if (value == 0)
-	{
-		ft_putnbr(0);
-		return ;
-	}
 	str = ft_strnew(msize_hexa_int(value) + 1);
+	if (value == 0)
+		str[0] = '0';
 	i = 0;
 	while (value != 0)
 	{
@@ -75,6 +69,6 @@ void	hexa_low(unsigned int value)
 		++i;
 		value /= 16;
 	}
-	ft_putstr(ft_strrev(str));
-	free(str);
+	v->str = ft_strrev(str);
+	v->buff = fillbuff(v);
 }

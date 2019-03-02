@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:36:31 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/27 18:08:09 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/02 14:57:17 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,11 @@ void	percent_o(unsigned int value, t_var *v)
 	int		i;
 	int		tmp;
 
+	str = ft_strnew(mbase_eight(value));
 	if (value == 0)
-	{
-		ft_putnbr(0);
-		return ;
-	}
+		str[0] = '0';
 	tmp = 0;
 	i = 0;
-	str = ft_strnew(mbase_eight(value));
 	while (value != 0)
 	{
 		tmp = value % 8;
@@ -73,12 +70,9 @@ char	*hexa_pointer(unsigned long value)
 	int		i;
 	int		tmp;
 
-	if (value == 0)
-	{
-		ft_putnbr(0);
-		return (NULL);
-	}
 	str = ft_strnew(msize_hexa_ptr(value) + 1);
+	if (value == 0)
+		str[0] = '0';
 	i = 0;
 	while (value != 0)
 	{

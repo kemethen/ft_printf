@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/27 18:21:46 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:10:45 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ size_t	check3(const char *str, va_list ap, t_var *v)
 {
 	if (str[v->i + 1] == 'x')
 	{
-		hexa_low(va_arg(ap, unsigned int));
+		hexa_low(va_arg(ap, unsigned int), v);
 		v->j = v->i + 2;
 	}
 	if (str[v->i + 1] == 'X')
 	{
-		hexa_up(va_arg(ap, unsigned int));
+		hexa_up(va_arg(ap, unsigned int), v);
 		v->j = v->i + 2;
 	}
 	if (str[v->i + 1] == 'h')
-		v->j = percent_h(str, ap, v->i, v->j);
+		v->j = percent_h(str, ap, v);
 	v->j = percent_l(str, ap, v);
 	return (v->j);
 }
@@ -61,7 +61,7 @@ size_t	check2(const char *str, va_list ap, t_var *v)
 	}
 	if (str[v->i + 1] == 'u')
 	{
-		percent_u(va_arg(ap, unsigned int), v);
+		percent_d_and_i(va_arg(ap, unsigned int), v);
 		v->j = v->i + 2;
 	}
 	v->j = check3(str, ap, v);
