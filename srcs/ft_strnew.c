@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/13 10:45:59 by kemethen          #+#    #+#             */
+/*   Updated: 2019/01/25 11:51:24 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+char	*ft_strnew(size_t size)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	ft_bzero(str, size + 1);
+	return (str);
 }

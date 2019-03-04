@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/14 18:41:37 by kemethen          #+#    #+#             */
+/*   Updated: 2018/12/11 18:54:55 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	char	*s2;
+	size_t	i;
+
+	if (s == NULL || (len + start) > ft_strlen(s))
+		return (NULL);
+	if (!(s2 = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = (size_t)start;
+	while (len)
+	{
+		s2[i - start] = s[i];
+		i++;
+		len--;
+	}
+	s2[i - start] = '\0';
+	return (s2);
 }

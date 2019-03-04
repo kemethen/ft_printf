@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/02 18:10:45 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/04 18:07:25 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,14 @@ size_t	check3(const char *str, va_list ap, t_var *v)
 	}
 	if (str[v->i + 1] == 'h')
 		v->j = percent_h(str, ap, v);
+	if (str[v->i + 1] == '%')
+	{
+		percent_percent(v);
+		v->i = v->i + 1;
+		v->j = v->i + 1;
+	}
 	v->j = percent_l(str, ap, v);
+	v->j = percent_sharp(str, ap, v);
 	return (v->j);
 }
 
@@ -61,7 +68,7 @@ size_t	check2(const char *str, va_list ap, t_var *v)
 	}
 	if (str[v->i + 1] == 'u')
 	{
-		percent_d_and_i(va_arg(ap, unsigned int), v);
+		percent_u(va_arg(ap, unsigned int), v);
 		v->j = v->i + 2;
 	}
 	v->j = check3(str, ap, v);
@@ -103,9 +110,7 @@ int		ft_printf(const char *str, ...)
 	t_var	*v;
 	int		len;
 
-	if (!(v = (t_var *)malloc(sizeof(t_var))))
-		return (-1);
-	ft_bzero(v, sizeof(t_var));
+	v = ft_memalloc(sizeof(t_var));
 	va_start(ap, str);
 	len = check(str, ap, v);
 	va_end(ap);

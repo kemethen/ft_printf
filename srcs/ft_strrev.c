@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2019/02/16 12:19:57 by kemethen          #+#    #+#             */
+/*   Updated: 2019/02/18 16:32:48 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+char	*ft_strrev(char *str)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	char	tmp;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		++i;
+		--j;
+	}
+	return (str);
 }

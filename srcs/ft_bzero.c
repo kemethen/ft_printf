@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kemethen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/09 11:05:47 by kemethen          #+#    #+#             */
+/*   Updated: 2018/11/11 14:31:09 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+void	ft_bzero(void *s, size_t n)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = s;
+	while (i < n)
+	{
+		str[i] = '\0';
+		i++;
+	}
 }

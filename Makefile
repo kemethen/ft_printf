@@ -6,19 +6,17 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/03/02 18:36:01 by kemethen         ###   ########.fr        #
+#    Updated: 2019/03/04 18:27:19 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 CC		= gcc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS  = -Wall -Wextra -Werror
 AR      = ar
-ARFLAGS = rcs
+ARFLAGS = -rcs
 SRCDIR	= srcs
 OBJDIR	= obj
-LIBDIR	= libft
-INCDIR	= $(LIBDIR)
 
 HEAD	= ft_printf.h
 
@@ -29,14 +27,30 @@ SRC		=	ft_printf.c \
 			percent_l.c \
 			percent_ld_and_li.c \
 			percent_lo.c \
+			percent_lx.c \
 			percent_p_and_o.c \
 			percent_percent.c \
+			percent_sharp_o_and_x.c \
+			percent_sharp.c \
+			percent_u.c \
 			percent_x.c \
-			printf_return.c
+			printf_return.c \
+			ft_bzero.c \
+			ft_itoa.c \
+			ft_lltoa.c \
+			ft_putstr.c \
+			ft_putstr_fd.c \
+			ft_strdup.c \
+			ft_strjoin.c \
+			ft_strlen.c \
+			ft_strnew.c \
+			ft_strrev.c \
+			ft_strsub.c \
+			ft_uitoa.c \
+			ft_memalloc.c \
+			ft_strcpy.c
 
-CFLAGS += -I$(INCDIR)
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
-LIB		= $(LIBDIR)/libft.a
 
 RED		= \033[1;31m
 GREEN	= \033[1;32m
@@ -47,14 +61,11 @@ WHITE	= \033[1;37m
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJ)
+$(NAME): $(OBJ)
 	@echo "\n$(YELLOW)$@ \t$(PURPLE)must be updated with $(WHITE)$(notdir $?)"
 	@echo "$(PURPLE)Updating\t$(YELLOW)$@"
-	@$(AR) $(ARFLAGS) $@ libft/libft.a $?
+	@$(AR) $(ARFLAGS) $@ $?
 	@echo "$@ :\t$(GREEN)Indexed / Up to date"
-
-$(LIB):
-	@make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/$(HEAD)
 	@echo "$(PURPLE)Updating\t$(WHITE)$@"
@@ -67,15 +78,13 @@ $(OBJDIR):
 	@mkdir $@
 
 clean:
-	@make -C $(LIBDIR) clean
 	@echo "$(RED)Deleting\t$(WHITE)directory $(BLUE)'$(OBJDIR)'"
 	@rm -rf $(OBJDIR)
 
 fclean: clean
-	@make -C $(LIBDIR) fclean
 	@echo "$(RED)Deleting\t$(YELLOW)$(NAME)\n"
 	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIB)
+.PHONY: all clean fclean re

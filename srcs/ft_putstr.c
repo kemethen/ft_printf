@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/13 10:18:28 by kemethen          #+#    #+#             */
+/*   Updated: 2018/11/21 14:52:51 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+void	ft_putstr(const char *s)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	ft_putstr_fd(s, 1);
 }

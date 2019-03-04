@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:40 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/06 18:41:01 by kemethen          #+#    #+#             */
+/*   Updated: 2019/02/27 19:19:51 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+char	*ft_strdup(const char *s1)
 {
-	v->str = ft_itoa(nb);
-	v->buff = fillbuff(v);
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = ft_strnew(ft_strlen(s1));
+	return (ft_strcpy(dest, s1));
 }
