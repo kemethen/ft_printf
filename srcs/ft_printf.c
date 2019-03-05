@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 18:07:25 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:57:35 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*fillbuff(t_var *v)
 	v->buff = ft_strjoin(tmp, v->str);
 	free(v->str);
 	free(tmp);
+	v->prc = 0;
+	v->width = 0;
 	return (v->buff);
 }
 
@@ -41,7 +43,7 @@ size_t	check3(const char *str, va_list ap, t_var *v)
 	if (str[v->i + 1] == '%')
 	{
 		percent_percent(v);
-		v->i = v->i + 1;
+		++v->i;
 		v->j = v->i + 1;
 	}
 	v->j = percent_l(str, ap, v);
@@ -56,11 +58,12 @@ size_t	check2(const char *str, va_list ap, t_var *v)
 		percent_p(ap, v);
 		v->j = v->i + 2;
 	}
+	if (ft_isdigit(str[v->i + 1]) && str[v->i + 1] != '\0')
+		percent_nbr(str, v);
+	if (str[v->i + 1] == '.')
+		percent_dot(str, v);
 	if (str[v->i + 1] == 'd' || str[v->i + 1] == 'i')
-	{
 		percent_d_and_i(va_arg(ap, int), v);
-		v->j = v->i + 2;
-	}
 	if (str[v->i + 1] == 'o')
 	{
 		percent_o(va_arg(ap, unsigned int), v);

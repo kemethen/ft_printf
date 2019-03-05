@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   percent_dot.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:32:32 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/05 12:21:34 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/05 18:16:44 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+void	percent_dot(const char *str, t_var *v)
 {
-	v->str = ft_itoa(nb);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	if (str[v->i + 1] == '.')
+	{
+		v->i += 2;
+		v->j = v->i;
+		while (ft_isdigit(str[v->i]))
+			++v->i;
+		v->length = ft_strsub(str, v->j, v->i - v->j);
+		v->prc = ft_atoi(v->length);
+		free(v->length);
+		--v->i;
+	}
 }

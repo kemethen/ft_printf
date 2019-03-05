@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:57:51 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:53 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:33:07 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	percent_lo(long long value, t_var *v)
 		value /= 8;
 	}
 	v->str = ft_strrev(str);
-	v->buff = fillbuff(v);
+	pr_or_wd(v);
 }

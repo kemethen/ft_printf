@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:36:31 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:59 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:33:27 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	percent_o(unsigned int value, t_var *v)
 		value /= 8;
 	}
 	v->str = ft_strrev(str);
-	v->buff = fillbuff(v);
+	pr_or_wd(v);
 }
 
 char	*hexa_pointer(unsigned long value)

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:25:27 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:35:15 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:33:58 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	percent_u(unsigned int value, t_var *v)
 {
 	v->str = ft_uitoa(value);
-	v->buff = fillbuff(v);
+	pr_or_wd(v);
 }

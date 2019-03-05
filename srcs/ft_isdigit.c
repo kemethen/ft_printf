@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kemethen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:32:32 by kemethen         ###   ########.fr       */
+/*   Created: 2018/11/07 13:04:55 by kemethen          #+#    #+#             */
+/*   Updated: 2018/11/11 14:34:40 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+int		ft_isdigit(int c)
 {
-	v->str = ft_itoa(nb);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

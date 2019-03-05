@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   percent_nbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:32:32 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/05 17:56:21 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/05 18:55:27 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+void	percent_nbr(const char *str, t_var *v)
 {
-	v->str = ft_itoa(nb);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	if (ft_isdigit(str[v->i + 1]))
+	{
+		printf("v->width = %d\nstr est sur %c\n", v->width, str[v->i - 1]);
+		++v->i;
+		v->j = v->i;
+		printf("v->i avant %zu\n", v->i);
+		while (ft_isdigit(str[v->i]))
+			++v->i;
+		printf("v->i apres %zu\n", v->i);
+		v->length = ft_strsub(str, v->j, v->i - v->j);
+		v->width = ft_atoi(v->length);
+		free(v->length);
+	}
 }

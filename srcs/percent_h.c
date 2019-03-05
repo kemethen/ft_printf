@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:40:42 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:34:44 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:32:48 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	percent_ho(va_list ap, t_var *v)
 		tmp1 /= 8;
 	}
 	v->str = ft_strrev(str);
-	v->buff = fillbuff(v);
+	pr_or_wd(v);
 }
 
 size_t	percent_hh(const char *str, va_list ap, t_var *v)

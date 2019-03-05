@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d_and_i.c                                  :+:      :+:    :+:   */
+/*   width.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:29:32 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:32:32 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/05 18:22:42 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/05 18:40:15 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_d_and_i(int nb, t_var *v)
+void	width(t_var *v)
 {
-	v->str = ft_itoa(nb);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	v->size2 = 0;
+	v->len2 = ft_strlen(v->str);
+	if (v->len2 < v->width)
+	{
+		v->tmp = ft_strnew(v->width - v->len2);
+		while (v->size2 < v->width - v->len2)
+			v->tmp[v->size2++] = ' ';
+		v->tmp2 = ft_strdup(v->str);
+		free(v->str);
+		v->str = ft_strjoin(v->tmp, v->tmp2);
+	}
+	if (v->width > 0)
+	{
+		free(v->tmp);
+		free(v->tmp2);
+	}
+	v->buff = fillbuff(v);
 }
