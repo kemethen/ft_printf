@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/03/04 18:27:19 by kemethen         ###   ########.fr        #
+#    Updated: 2019/03/05 18:30:33 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,32 +23,38 @@ HEAD	= ft_printf.h
 SRC		=	ft_printf.c \
 			percent_c_and_s.c \
 			percent_d_and_i.c \
+			percent_dot.c \
 			percent_h.c \
 			percent_l.c \
 			percent_ld_and_li.c \
 			percent_lo.c \
 			percent_lx.c \
+			percent_nbr.c \
 			percent_p_and_o.c \
 			percent_percent.c \
 			percent_sharp_o_and_x.c \
 			percent_sharp.c \
 			percent_u.c \
 			percent_x.c \
+			precision.c \
 			printf_return.c \
+			width.c \
+			ft_atoi.c \
 			ft_bzero.c \
+			ft_isdigit.c \
 			ft_itoa.c \
 			ft_lltoa.c \
-			ft_putstr.c \
+			ft_memalloc.c \
 			ft_putstr_fd.c \
+			ft_putstr.c \
 			ft_strdup.c \
 			ft_strjoin.c \
+			ft_strcpy.c \
 			ft_strlen.c \
 			ft_strnew.c \
 			ft_strrev.c \
 			ft_strsub.c \
-			ft_uitoa.c \
-			ft_memalloc.c \
-			ft_strcpy.c
+			ft_uitoa.c 
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 

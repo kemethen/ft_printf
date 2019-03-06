@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:34:37 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/06 17:10:05 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	pr_or_wd(t_var *v)
 {
-//	if (v->width != 0 && v->prc != 0)
-//		pr_and_wd(v);
 	if (v->prc != 0)
 		precision(v);
-	if (v->width != 0)
+	else if (v->width != 0)
 		width(v);
 	else
 		v->buff = fillbuff(v);

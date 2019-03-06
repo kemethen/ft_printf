@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:57:35 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/06 17:22:21 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*fillbuff(t_var *v)
 	return (v->buff);
 }
 
-size_t	check3(const char *str, va_list ap, t_var *v)
+void	check3(const char *str, va_list ap, t_var *v)
 {
 	if (str[v->i + 1] == 'x')
 	{
@@ -48,17 +48,16 @@ size_t	check3(const char *str, va_list ap, t_var *v)
 	}
 	v->j = percent_l(str, ap, v);
 	v->j = percent_sharp(str, ap, v);
-	return (v->j);
 }
 
-size_t	check2(const char *str, va_list ap, t_var *v)
+void	check2(const char *str, va_list ap, t_var *v)
 {
 	if (str[v->i + 1] == 'p')
 	{
 		percent_p(ap, v);
 		v->j = v->i + 2;
 	}
-	if (ft_isdigit(str[v->i + 1]) && str[v->i + 1] != '\0')
+	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
 		percent_nbr(str, v);
 	if (str[v->i + 1] == '.')
 		percent_dot(str, v);
@@ -74,8 +73,7 @@ size_t	check2(const char *str, va_list ap, t_var *v)
 		percent_u(va_arg(ap, unsigned int), v);
 		v->j = v->i + 2;
 	}
-	v->j = check3(str, ap, v);
-	return (v->j);
+	check3(str, ap, v);
 }
 
 int		check(const char *str, va_list ap, t_var *v)
@@ -98,7 +96,7 @@ int		check(const char *str, va_list ap, t_var *v)
 			v->j = percent_c(v, (char)va_arg(ap, int), v->i, v->j);
 		if (str[v->i + 1] == 's')
 			v->j = percent_s(v, va_arg(ap, char *), v->i, v->j);
-		v->j = check2(str, ap, v);
+		check2(str, ap, v);
 		++v->i;
 	}
 	if (v->buff)
