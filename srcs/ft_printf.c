@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/06 17:22:21 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 16:35:11 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ void	check3(const char *str, va_list ap, t_var *v)
 		++v->i;
 		v->j = v->i + 1;
 	}
-	v->j = percent_l(str, ap, v);
-	v->j = percent_sharp(str, ap, v);
+	if (str[v->i + 1] == 'l')
+		v->j = percent_l(str, ap, v);
+	if (str[v->i + 1] == '#')
+		v->j = percent_sharp(str, ap, v);
+	else
+		v->i++;
 }
 
 void	check2(const char *str, va_list ap, t_var *v)

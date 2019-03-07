@@ -6,15 +6,33 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/06 17:10:05 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:28:15 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	pr_or_wd_sharp(t_var *v, char c)
+{
+	if (v->prc != 0 && v->width != 0)
+		pr_and_wd_sharp(v, c);
+	else if (v->prc != 0 && c == 'x')
+		precision_sharp_low(v);
+	else if (v->prc != 0 && c == 'X')
+		precision_sharp_up(v);
+	else if (v->width != 0 && c == 'x')
+		width_sharp_low(v);
+	else if (v->width != 0 && c == 'X')
+		width_sharp_up(v);
+	else
+		v->buff = fillbuff(v);
+}
+
 void	pr_or_wd(t_var *v)
 {
-	if (v->prc != 0)
+	if (v->prc != 0 && v->width != 0)
+		pr_and_wd(v);
+	else if (v->prc != 0)
 		precision(v);
 	else if (v->width != 0)
 		width(v);
@@ -35,7 +53,7 @@ void	precision(t_var *v)
 		free(v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
-	if (v->prc > 0)
+	if (v->len < v->prc)
 	{
 		free(v->tmp);
 		free(v->tmp2);
@@ -56,7 +74,7 @@ void	precision_sharp_low(t_var *v)
 		free(v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
-	if (v->prc > 0)
+	if (v->len < v->prc)
 	{
 		free(v->tmp);
 		free(v->tmp2);
@@ -81,7 +99,7 @@ void	precision_sharp_up(t_var *v)
 		free(v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
-	if (v->prc > 0)
+	if (v->len < v->prc)
 	{
 		free(v->tmp);
 		free(v->tmp2);

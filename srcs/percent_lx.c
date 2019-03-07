@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:33:19 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 12:49:35 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	hexa_up_ul(unsigned long value, t_var *v)
 	int			i;
 	long long	tmp;
 
-	str = ft_strnew(msize_hexa_ul(value) + 1);
+	str = ft_strnew(msize_hexa_ul(value));
 	if (value == 0)
 		str[0] = '0';
 	i = 0;
@@ -55,7 +55,7 @@ void	hexa_low_ul(unsigned long value, t_var *v)
 	int			i;
 	long long	tmp;
 
-	str = ft_strnew(msize_hexa_ul(value) + 1);
+	str = ft_strnew(msize_hexa_ul(value));
 	if (value == 0)
 		str[0] = '0';
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 18:33:44 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:25:02 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	hexa_up_sharp(unsigned int value, t_var *v)
 	}
 	v->str = ft_strdup(ft_strrev((str)));
 	free(str);
-	precision_sharp_up(v);
+	pr_or_wd_sharp(v, 'X');
 }
 
 void	hexa_low_sharp(unsigned int value, t_var *v)
@@ -84,5 +84,5 @@ void	hexa_low_sharp(unsigned int value, t_var *v)
 	}
 	v->str = ft_strdup(ft_strrev((str)));
 	free(str);
-	precision_sharp_low(v);
+	pr_or_wd_sharp(v, 'x');
 }

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:57:50 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/05 14:25:39 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 16:53:11 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	percent_sharp(const char *str, va_list ap, t_var *v)
 	{
 		while (str[v->i + 1] == '#')
 			++v->i;
+		if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
+			percent_nbr(str, v);
 		if (str[v->i + 1] == '.')
 			percent_dot(str, v);
 		if (str[v->i + 1] == 'o')

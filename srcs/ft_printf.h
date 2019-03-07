@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/06 17:08:32 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:28:59 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_var
 	char	*length;
 	char	*tmp;
 	char	*tmp2;
+	char	*prwd;
 	char	*buff;
 }				t_var;
 
@@ -45,6 +46,9 @@ void			precision(t_var *v);
 void			percent_nbr(const char *str, t_var *v);
 void			width(t_var *v);
 void			pr_or_wd(t_var *v);
+void			pr_and_wd(t_var *v);
+void			pr_or_wd_sharp(t_var *v, char c);
+void			pr_and_wd_sharp(t_var *v, char c);
 void			percent_d_and_i(int nb, t_var *v);
 void			percent_ld_and_li(long long nb, t_var *v);
 void			percent_u(unsigned int value, t_var *v);
@@ -58,9 +62,11 @@ char			*hexa_pointer(unsigned long value);
 void			hexa_up(unsigned int value, t_var *v);
 void			hexa_up_sharp(unsigned int value, t_var *v);
 void			precision_sharp_up(t_var *v);
+void			width_sharp_up(t_var *v);
 void			hexa_low(unsigned int value, t_var *v);
 void			hexa_low_sharp(unsigned int value, t_var *v);
 void			precision_sharp_low(t_var *v);
+void			width_sharp_low(t_var *v);
 void			percent_percent(t_var *v);
 size_t			percent_h(const char *str, va_list ap, t_var *v);
 size_t			percent_l(char const *str, va_list ap, t_var *v);
