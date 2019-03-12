@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/07 16:35:11 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:39:27 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	check3(const char *str, va_list ap, t_var *v)
 	if (str[v->i + 1] == '%')
 	{
 		percent_percent(v);
-		++v->i;
-		v->j = v->i + 1;
+		v->j = v->i + 2;
 	}
 	if (str[v->i + 1] == 'l')
 		v->j = percent_l(str, ap, v);
@@ -61,6 +60,8 @@ void	check2(const char *str, va_list ap, t_var *v)
 		percent_p(ap, v);
 		v->j = v->i + 2;
 	}
+	if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
+		percent_neg(str, v);
 	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
 		percent_nbr(str, v);
 	if (str[v->i + 1] == '.')
@@ -96,6 +97,8 @@ int		check(const char *str, va_list ap, t_var *v)
 		}
 		else
 			v->buff = v->str;
+		while (str[v->i + 1] == ' ')
+			v->i++;
 		if (str[v->i + 1] == 'c')
 			v->j = percent_c(v, (char)va_arg(ap, int), v->i, v->j);
 		if (str[v->i + 1] == 's')
@@ -103,10 +106,7 @@ int		check(const char *str, va_list ap, t_var *v)
 		check2(str, ap, v);
 		++v->i;
 	}
-	if (v->buff)
-		return (len_buff(v));
-	else
-		return (len_str(v));
+	return (printf_return(v));
 }
 
 int		ft_printf(const char *str, ...)

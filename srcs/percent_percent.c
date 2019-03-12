@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 15:06:01 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/04 16:35:02 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/12 11:34:11 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	percent_percent(t_var *v)
 {
 	v->str = ft_strnew(1);
 	v->str[0] = '%';
-	v->buff = fillbuff(v);
+	width(v);
 }

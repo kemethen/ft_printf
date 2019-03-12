@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/07 18:28:59 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:40:40 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_var
 	int		len2;
 	int		size;
 	int		size2;
+	int		neg;
 	char	*str;
 	char	*length;
 	char	*tmp;
@@ -41,6 +42,7 @@ char			*fillbuff(t_var *v);
 size_t			percent_c(t_var *v, char c, size_t i, size_t j);
 size_t			percent_s(t_var *v, char *str, size_t i, size_t j);
 void			percent_p(va_list ap, t_var *v);
+void			percent_neg(const char *str, t_var *v);
 void			percent_dot(const char *str, t_var *v);
 void			precision(t_var *v);
 void			percent_nbr(const char *str, t_var *v);
@@ -72,6 +74,7 @@ size_t			percent_h(const char *str, va_list ap, t_var *v);
 size_t			percent_l(char const *str, va_list ap, t_var *v);
 void			hexa_low_ul(unsigned long value, t_var *v);
 void			hexa_up_ul(unsigned long value, t_var *v);
+size_t			printf_return(t_var *v);
 size_t			len_buff(t_var *v);
 size_t			len_str(t_var *v);
 

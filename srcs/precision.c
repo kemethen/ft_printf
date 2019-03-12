@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/07 18:28:15 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:14:05 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	pr_or_wd_sharp(t_var *v, char c)
 {
+	char	*tmp;
+
+	if (c == 'x')
+		tmp = ft_strdup("0x");
+	else
+		tmp = ft_strdup("0X");
 	if (v->prc != 0 && v->width != 0)
 		pr_and_wd_sharp(v, c);
 	else if (v->prc != 0 && c == 'x')
@@ -25,7 +31,14 @@ void	pr_or_wd_sharp(t_var *v, char c)
 	else if (v->width != 0 && c == 'X')
 		width_sharp_up(v);
 	else
+	{
+		v->tmp = ft_strdup(v->str);
+		free(v->str);
+		v->str = ft_strjoin(tmp, v->tmp);
+		free(tmp);
+		free(v->tmp);
 		v->buff = fillbuff(v);
+	}
 }
 
 void	pr_or_wd(t_var *v)

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 17:56:21 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/07 10:16:41 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/12 12:16:18 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,10 @@ void	percent_nbr(const char *str, t_var *v)
 	v->length = ft_strsub(str, v->j, v->i - v->j);
 	v->width = ft_atoi(v->length);
 	free(v->length);
+	if (str[v->j] == '0')
+	{
+		v->prc = v->width;
+		v->width = 0;
+	}
 	--v->i;
 }
