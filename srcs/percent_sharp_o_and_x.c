@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/12 12:11:21 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/25 15:54:21 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	percent_sharp_o(unsigned int value, t_var *v)
 
 	str = ft_strnew(mbase_eight(value));
 	if (value == 0)
+	{
 		str[0] = '0';
+		v->buff = fillbuff(v);
+		return ;
+	}
 	tmp = 0;
 	i = 0;
 	while (value != 0)
@@ -43,9 +47,14 @@ void	hexa_up_sharp(unsigned int value, t_var *v)
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_int(value));
 	if (value == 0)
+	{
 		str[0] = '0';
+		v->str = str;
+		v->buff = fillbuff(v);
+		return ;
+	}
 	i = 0;
 	while (value != 0)
 	{
@@ -68,9 +77,13 @@ void	hexa_low_sharp(unsigned int value, t_var *v)
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_int(value));
 	if (value == 0)
+	{
 		str[0] = '0';
+		v->buff = fillbuff(v);
+		return ;
+	}
 	i = 0;
 	while (value != 0)
 	{

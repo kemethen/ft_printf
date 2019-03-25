@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/12 13:39:27 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/25 15:48:23 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void	check3(const char *str, va_list ap, t_var *v)
 
 void	check2(const char *str, va_list ap, t_var *v)
 {
+	if (str[v->i + 1] == '.')
+		percent_dot(str, v);
+	if (str[v->i + 1] == 'c')
+		v->j = percent_c(v, (char)va_arg(ap, int), v->i, v->j);
+	if (str[v->i + 1] == 's')
+		v->j = percent_s(v, va_arg(ap, char *), v->i, v->j);
 	if (str[v->i + 1] == 'p')
 	{
 		percent_p(ap, v);
 		v->j = v->i + 2;
 	}
-	if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
-		percent_neg(str, v);
-	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
-		percent_nbr(str, v);
-	if (str[v->i + 1] == '.')
-		percent_dot(str, v);
 	if (str[v->i + 1] == 'd' || str[v->i + 1] == 'i')
 		percent_d_and_i(va_arg(ap, int), v);
 	if (str[v->i + 1] == 'o')
@@ -99,10 +99,10 @@ int		check(const char *str, va_list ap, t_var *v)
 			v->buff = v->str;
 		while (str[v->i + 1] == ' ')
 			v->i++;
-		if (str[v->i + 1] == 'c')
-			v->j = percent_c(v, (char)va_arg(ap, int), v->i, v->j);
-		if (str[v->i + 1] == 's')
-			v->j = percent_s(v, va_arg(ap, char *), v->i, v->j);
+		if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
+			percent_neg(str, v);
+		if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
+			percent_nbr(str, v);
 		check2(str, ap, v);
 		++v->i;
 	}

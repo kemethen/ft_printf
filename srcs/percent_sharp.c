@@ -6,24 +6,48 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:57:50 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/12 17:44:31 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/25 15:32:38 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_sharp2(const char *str, va_list ap, t_var *v)
+size_t	percent_sharp3(const char *str, va_list ap, t_var *v)
+{
+	if (str[v->i + 2] == 'X')
+		hexa_up_sharp(va_arg(ap, unsigned long), v);
+	return (v->i + 3);
+}
+
+size_t	percent_sharp2(const char *str, va_list ap, t_var *v)
 {
 	if (str[v->i + 1] == 'x')
 	{
 		hexa_low_sharp(va_arg(ap, unsigned int), v);
-		v->j = v->i + 2;
+		v->j = v->i + 3;
 	}
 	if (str[v->i + 1] == 'X')
 	{
 		hexa_up_sharp(va_arg(ap, unsigned int), v);
-		v->j = v->i + 2;
+		v->j = v->i + 3;
 	}
+	if (str[v->i + 1] == 'l')
+	{
+		if (str[v->i + 2] == 'l')
+			++v->i;
+		if (str[v->i + 2] == 'o')
+		{
+			percent_sharp_o(va_arg(ap, unsigned long), v);
+			v->j = v->i + 3;
+		}
+		if (str[v->i + 2] == 'x')
+		{
+			hexa_low_sharp(va_arg(ap, unsigned long), v);
+			v->j = v->i + 3;
+		}
+		v->j = percent_sharp3(str, ap, v);
+	}
+	return (v->j);
 }
 
 size_t	percent_sharp(const char *str, va_list ap, t_var *v)
@@ -43,7 +67,7 @@ size_t	percent_sharp(const char *str, va_list ap, t_var *v)
 			percent_sharp_o(va_arg(ap, unsigned int), v);
 			v->j = v->i + 2;
 		}
-		percent_sharp2(str, ap, v);
+		v->j = percent_sharp2(str, ap, v);
 	}
 	return (v->j);
 }
