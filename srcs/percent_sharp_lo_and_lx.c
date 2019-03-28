@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_sharp_o_and_x.c                            :+:      :+:    :+:   */
+/*   percent_sharp_lo_and_lx.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 15:08:21 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/28 13:33:50 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/28 14:55:58 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_sharp_o(unsigned int value, t_var *v)
+void	percent_sharp_lo(long long value, t_var *v)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(mbase_eight(value) + 1);
+	str = ft_strnew(mbase_eight(value));
 	if (value == 0)
 	{
 		str[0] = '0';
@@ -43,17 +43,18 @@ void	percent_sharp_o(unsigned int value, t_var *v)
 	pr_or_wd(v);
 }
 
-void	hexa_up_sharp(unsigned int value, t_var *v)
+void	hexa_up_lsharp(long long value, t_var *v)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_int(value));
 	if (value == 0)
 	{
-		free(str);
-		percent_d_and_i(0, v);
+		str[0] = '0';
+		v->str = str;
+		pr_or_wd_sharp(v, 'X');
 		return ;
 	}
 	i = 0;
@@ -67,21 +68,23 @@ void	hexa_up_sharp(unsigned int value, t_var *v)
 		++i;
 		value /= 16;
 	}
-	v->str = ft_strrev(str);
+	v->str = ft_strdup(ft_strrev(str));
+	free(str);
 	pr_or_wd_sharp(v, 'X');
 }
 
-void	hexa_low_sharp(unsigned int value, t_var *v)
+void	hexa_low_lsharp(long long value, t_var *v)
 {
 	char	*str;
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_int(value));
 	if (value == 0)
 	{
-		free(str);
-		percent_d_and_i(0, v);
+		str[0] = '0';
+		v->str = str;
+		pr_or_wd_sharp(v, 'x');
 		return ;
 	}
 	i = 0;
@@ -95,6 +98,7 @@ void	hexa_low_sharp(unsigned int value, t_var *v)
 		++i;
 		value /= 16;
 	}
-	v->str = ft_strrev(str);
+	v->str = ft_strdup(ft_strrev(str));
+	free(str);
 	pr_or_wd_sharp(v, 'x');
 }

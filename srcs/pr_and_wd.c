@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 10:23:44 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/12 17:49:16 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:44:24 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,20 @@ void	wd_higher_prc(t_var *v, int prsize, int wdsize)
 	}
 	while (wdsize < v->width - v->prc)
 		v->tmp[wdsize++] = ' ';
-	v->prwd = ft_strjoin(v->tmp, v->tmp2);
-	free(v->tmp);
-	free(v->tmp2);
-	v->tmp = ft_strdup(v->str);
-	free(v->str);
-	v->str = ft_strjoin(v->prwd, v->tmp);
-	free(v->tmp);
-	free(v->prwd);
-	v->buff = fillbuff(v);
+	if (v->neg == 2)
+		pr_and_wd_neg(v);
+	else
+	{
+		v->prwd = ft_strjoin(v->tmp, v->tmp2);
+		free(v->tmp);
+		free(v->tmp2);
+		v->tmp = ft_strdup(v->str);
+		free(v->str);
+		v->str = ft_strjoin(v->prwd, v->tmp);
+		free(v->tmp);
+		free(v->prwd);
+		v->buff = fillbuff(v);
+	}
 }
 
 void	pr_and_wd(t_var *v)

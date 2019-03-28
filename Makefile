@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/03/12 13:40:00 by kemethen         ###   ########.fr        #
+#    Updated: 2019/03/28 17:45:11 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,12 @@ SRC		=	ft_printf.c \
 			percent_p_and_o.c \
 			percent_percent.c \
 			percent_sharp_o_and_x.c \
+			percent_sharp_lo_and_lx.c \
 			percent_sharp.c \
 			percent_u.c \
 			percent_x.c \
 			pr_and_wd.c \
+			pr_and_wd_neg.c \
 			precision.c \
 			printf_return.c \
 			width.c \
@@ -53,6 +55,8 @@ SRC		=	ft_printf.c \
 			ft_strjoin.c \
 			ft_strcpy.c \
 			ft_strlen.c \
+			ft_strncpy.c \
+			ft_strndup.c \
 			ft_strnew.c \
 			ft_strrev.c \
 			ft_strsub.c \

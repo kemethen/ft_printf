@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_u.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 12:25:27 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 14:55:59 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/28 15:17:14 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/28 15:17:15 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	percent_u(unsigned int value, t_var *v)
+char	*ft_strncpy(char *dest, const char *src, size_t len)
 {
-	v->str = ft_uitoa(value);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	size_t	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < len)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

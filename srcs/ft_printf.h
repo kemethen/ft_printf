@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/12 13:40:40 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:56:58 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void			precision(t_var *v);
 void			percent_nbr(const char *str, t_var *v);
 void			width(t_var *v);
 void			pr_or_wd(t_var *v);
+void			pr_or_wd_ltr(t_var *v);
 void			pr_and_wd(t_var *v);
+void			pr_and_wd_neg(t_var *v);
 void			pr_or_wd_sharp(t_var *v, char c);
 void			pr_and_wd_sharp(t_var *v, char c);
 void			percent_d_and_i(int nb, t_var *v);
@@ -58,22 +60,25 @@ void			percent_o(unsigned int value, t_var *v);
 void			percent_lo(long long value, t_var *v);
 size_t			percent_sharp(const char *str, va_list ap, t_var *v);
 void			percent_sharp_o(unsigned int value, t_var *v);
+void			percent_sharp_lo(long long value, t_var *v);
 size_t			mbase_eight(unsigned long n);
 int				msize_hexa_int(unsigned int n);
 char			*hexa_pointer(unsigned long value);
 void			hexa_up(unsigned int value, t_var *v);
 void			hexa_up_sharp(unsigned int value, t_var *v);
+void			hexa_up_lsharp(long long value, t_var *v);
 void			precision_sharp_up(t_var *v);
 void			width_sharp_up(t_var *v);
 void			hexa_low(unsigned int value, t_var *v);
 void			hexa_low_sharp(unsigned int value, t_var *v);
+void			hexa_low_lsharp(long long value, t_var *v);
 void			precision_sharp_low(t_var *v);
 void			width_sharp_low(t_var *v);
 void			percent_percent(t_var *v);
 size_t			percent_h(const char *str, va_list ap, t_var *v);
 size_t			percent_l(char const *str, va_list ap, t_var *v);
-void			hexa_low_ul(unsigned long value, t_var *v);
-void			hexa_up_ul(unsigned long value, t_var *v);
+void			hexa_low_ul(long long value, t_var *v);
+void			hexa_up_ul(long long value, t_var *v);
 size_t			printf_return(t_var *v);
 size_t			len_buff(t_var *v);
 size_t			len_str(t_var *v);

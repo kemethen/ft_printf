@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/25 15:48:23 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/03/28 14:55:57 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	check3(const char *str, va_list ap, t_var *v)
 
 void	check2(const char *str, va_list ap, t_var *v)
 {
+	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
+		percent_nbr(str, v);
 	if (str[v->i + 1] == '.')
 		percent_dot(str, v);
 	if (str[v->i + 1] == 'c')
@@ -74,10 +76,7 @@ void	check2(const char *str, va_list ap, t_var *v)
 		v->j = v->i + 2;
 	}
 	if (str[v->i + 1] == 'u')
-	{
 		percent_u(va_arg(ap, unsigned int), v);
-		v->j = v->i + 2;
-	}
 	check3(str, ap, v);
 }
 
@@ -96,13 +95,14 @@ int		check(const char *str, va_list ap, t_var *v)
 			free(v->str);
 		}
 		else
-			v->buff = v->str;
+		{
+			v->buff = ft_strdup(v->str);
+			free(v->str);
+		}
 		while (str[v->i + 1] == ' ')
 			v->i++;
 		if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
 			percent_neg(str, v);
-		if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
-			percent_nbr(str, v);
 		check2(str, ap, v);
 		++v->i;
 	}

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_u.c                                        :+:      :+:    :+:   */
+/*   pr_and_wd_neg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/04 12:25:27 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 14:55:59 by kemethen         ###   ########.fr       */
+/*   Created: 2019/03/28 17:43:06 by kemethen          #+#    #+#             */
+/*   Updated: 2019/03/28 17:56:24 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_u(unsigned int value, t_var *v)
+void	pr_and_wd_neg(t_var *v)
 {
-	v->str = ft_uitoa(value);
-	pr_or_wd(v);
-	v->j = v->i + 2;
+	v->prwd = ft_strjoin(v->tmp2, v->str);
+	free(v->tmp2);
+	free(v->str);
+	v->str = ft_strjoin(v->prwd, v->tmp);
+	free(v->tmp);
+	free(v->prwd);
+	v->buff = fillbuff(v);
+}
+
+void	pr_or_wd_ltr(t_var *v)
+{
+	if (v->width != 0)
+		width(v);
+	else
+		v->buff = fillbuff(v);
 }
