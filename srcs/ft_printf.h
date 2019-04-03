@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 17:56:58 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:12:27 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ typedef struct	s_var
 	int		len2;
 	int		size;
 	int		size2;
+	int		dot;
 	int		neg;
+	int		plus;
+	int		zero;
 	char	*str;
 	char	*length;
 	char	*tmp;
@@ -56,6 +59,7 @@ void			pr_and_wd_sharp(t_var *v, char c);
 void			percent_d_and_i(int nb, t_var *v);
 void			percent_ld_and_li(long long nb, t_var *v);
 void			percent_u(unsigned int value, t_var *v);
+void			percent_lu(unsigned long value, t_var *v);
 void			percent_o(unsigned int value, t_var *v);
 void			percent_lo(long long value, t_var *v);
 size_t			percent_sharp(const char *str, va_list ap, t_var *v);

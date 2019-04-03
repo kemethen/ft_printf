@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/03/28 17:45:11 by kemethen         ###   ########.fr        #
+#    Updated: 2019/04/03 14:02:26 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC		=	ft_printf.c \
 			percent_h.c \
 			percent_l.c \
 			percent_ld_and_li.c \
-			percent_lo.c \
+			percent_lo_and_lu.c \
 			percent_lx.c \
 			percent_nbr.c \
 			percent_neg.c \
@@ -60,7 +60,8 @@ SRC		=	ft_printf.c \
 			ft_strnew.c \
 			ft_strrev.c \
 			ft_strsub.c \
-			ft_uitoa.c 
+			ft_uitoa.c \
+			ft_ultoa.c
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 

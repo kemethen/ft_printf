@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 14:55:57 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:44:18 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ char	*fillbuff(t_var *v)
 	free(tmp);
 	v->prc = 0;
 	v->width = 0;
+	v->neg = 0;
+	v->plus = 0;
+	v->zero = 0;
+	v->dot = 0;
 	return (v->buff);
 }
 
@@ -55,8 +59,8 @@ void	check3(const char *str, va_list ap, t_var *v)
 
 void	check2(const char *str, va_list ap, t_var *v)
 {
-	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
-		percent_nbr(str, v);
+	while (str[v->i + 1] == ' ')
+		v->i++;
 	if (str[v->i + 1] == '.')
 		percent_dot(str, v);
 	if (str[v->i + 1] == 'c')
@@ -99,8 +103,10 @@ int		check(const char *str, va_list ap, t_var *v)
 			v->buff = ft_strdup(v->str);
 			free(v->str);
 		}
-		while (str[v->i + 1] == ' ')
-			v->i++;
+		printf("str[%zu] = %c\n", v->i, str[v->i]);
+		if (ft_isdigit(str[v->i + 1]) && str[v->i + 1] != '\0')
+			percent_nbr(str, v);
+		printf("str[%zu] = %c\n", v->i, str[v->i]);
 		if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
 			percent_neg(str, v);
 		check2(str, ap, v);

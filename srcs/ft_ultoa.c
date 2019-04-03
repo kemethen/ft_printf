@@ -1,62 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lltoa.c                                         :+:      :+:    :+:   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/02 14:52:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 13:57:11 by kemethen         ###   ########.fr       */
+/*   Created: 2019/04/03 14:01:44 by kemethen          #+#    #+#             */
+/*   Updated: 2019/04/03 14:04:17 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_len(long long n)
+static int		ft_len(unsigned long n)
 {
-	int			i;
+	unsigned long	nbr;
+	int				i;
 
+	nbr = n;
 	i = 0;
-	if (n == 0)
+	if (nbr == 0)
 		return (1);
-	if (n < 0)
-		n = -n;
-	while (n != 0)
+	while (nbr != 0)
 	{
 		++i;
-		n /= 10;
+		nbr = nbr / 10;
 	}
 	return (i);
 }
 
-char			*nzero_ll(char *str)
+char			*nzeroul(char *str)
 {
 	str[0] = '0';
 	return (str);
 }
 
-char			*ft_lltoa(long long n)
+char			*ft_ultoa(unsigned long n)
 {
-	long long	nbr;
-	int			neg;
-	int			i;
-	char		*result;
+	unsigned long	nbr;
+	int				i;
+	char			*result;
 
 	nbr = n;
 	i = 0;
-	neg = (nbr < 0) ? 1 : 0;
-	result = ft_strnew((size_t)ft_len(nbr) + neg);
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		result[0] = '-';
-	}
+	result = ft_strnew(ft_len(n));
 	if (n == 0)
-		return (nzero_ll(result));
-	while (nbr != 0)
+		return (nzeroul(result));
+	while (i < ft_len(n))
 	{
-		result[ft_len(n) - i + neg - 1] = (nbr % 10) + '0';
-		nbr /= 10;
+		result[ft_len(n) - i - 1] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 		++i;
 	}
 	return (result);

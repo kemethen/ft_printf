@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:50:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 13:28:52 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/03 13:58:18 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t	percent_l(char const *str, va_list ap, t_var *v)
 		}
 		if (str[v->i + 2] == 'u')
 		{
-			percent_ld_and_li(va_arg(ap, long long), v);
+			percent_lu(va_arg(ap, unsigned long), v);
 			v->j = v->i + 3;
 		}
 		v->j = percent_lx(str, ap, v);

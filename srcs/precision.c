@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 14:27:26 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/03 17:04:12 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ void	precision(t_var *v)
 	v->len = ft_strlen(v->str);
 	if (v->len < v->prc)
 	{
-		v->tmp = ft_strnew(v->prc - v->len);
-		while (v->size < v->prc - v->len)
+		v->tmp = ft_strnew(v->prc - v->len + v->plus);
+		if (v->plus == 1)
+			v->tmp[v->size++] = '+';
+		while (v->size < v->prc - v->len + v->plus)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
 		free(v->str);
@@ -81,7 +83,7 @@ void	precision_sharp_low(t_var *v)
 	if (v->len < v->prc)
 	{
 		v->tmp = ft_strnew(v->prc - v->len);
-		while (v->size < v->prc - v->len)
+		while (v->size < v->prc - v->len - v->zero)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
 		free(v->str);
@@ -106,7 +108,7 @@ void	precision_sharp_up(t_var *v)
 	if (v->len < v->prc)
 	{
 		v->tmp = ft_strnew(v->prc - v->len);
-		while (v->size < v->prc - v->len)
+		while (v->size < v->prc - v->len - v->zero)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
 		free(v->str);
