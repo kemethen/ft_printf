@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 17:04:12 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 18:39:44 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,14 @@ void	pr_or_wd_sharp(t_var *v, char c)
 
 void	pr_or_wd(t_var *v)
 {
-	if (v->prc != 0 && v->width != 0)
+	if (v->dot == 1 && v->prc == 0)
+	{
+		free(v->str);
+		v->str = ft_strnew(1);
+		if (v->width != 0)
+			width(v);
+	}
+	else if (v->prc != 0 && v->width != 0)
 		pr_and_wd(v);
 	else if (v->prc != 0)
 		precision(v);
@@ -60,7 +67,7 @@ void	precision(t_var *v)
 	if (v->len < v->prc)
 	{
 		v->tmp = ft_strnew(v->prc - v->len + v->plus);
-		if (v->plus == 1)
+		if (v->plus == 1 && v->neg == 0)
 			v->tmp[v->size++] = '+';
 		while (v->size < v->prc - v->len + v->plus)
 			v->tmp[v->size++] = '0';

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 18:22:42 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 13:05:08 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 15:39:21 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	width(t_var *v)
 			v->tmp[v->size2++] = '+';
 		v->tmp2 = ft_strdup(v->str);
 		free(v->str);
-		if (v->neg == 2)
+		if (v->mns == 2)
 			v->str = ft_strjoin(v->tmp2, v->tmp);
 		else
 			v->str = ft_strjoin(v->tmp, v->tmp2);
@@ -55,7 +55,7 @@ void	width_sharp_low(t_var *v)
 		free(v->tmp2);
 	v->tmp2 = ft_strdup(v->str);
 	free(v->str);
-	if (v->neg == 2)
+	if (v->mns == 2)
 		v->str = ft_strjoin(v->tmp2, v->tmp);
 	else
 		v->str = ft_strjoin(v->tmp, v->tmp2);
@@ -81,7 +81,7 @@ void	width_sharp_up(t_var *v)
 		free(v->tmp2);
 	v->tmp2 = ft_strdup(v->str);
 	free(v->str);
-	if (v->neg == 2)
+	if (v->mns == 2)
 		v->str = ft_strjoin(v->tmp2, v->tmp);
 	else
 		v->str = ft_strjoin(v->tmp, v->tmp2);

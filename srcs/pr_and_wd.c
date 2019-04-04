@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 10:23:44 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 17:06:19 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 16:12:04 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	wd_higher_prc(t_var *v, int prsize, int wdsize)
 	}
 	while (wdsize < v->width - v->prc)
 		v->tmp[wdsize++] = ' ';
-	if (v->neg == 2)
+	if (v->mns == 2)
 		pr_and_wd_neg(v);
 	else
 	{

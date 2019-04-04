@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/04/03 14:02:26 by kemethen         ###   ########.fr        #
+#    Updated: 2019/04/04 15:41:17 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,12 @@ SRC		=	ft_printf.c \
 			percent_lo_and_lu.c \
 			percent_lx.c \
 			percent_nbr.c \
-			percent_neg.c \
 			percent_p_and_o.c \
 			percent_percent.c \
 			percent_sharp_o_and_x.c \
 			percent_sharp_lo_and_lx.c \
 			percent_sharp.c \
+			percent_sign.c \
 			percent_u.c \
 			percent_x.c \
 			pr_and_wd.c \

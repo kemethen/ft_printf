@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:21:34 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 18:12:36 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:12:31 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void	percent_dot(const char *str, t_var *v)
 		v->dot = 1;
 		v->i += 2;
 		v->j = v->i;
-		while (ft_isdigit(str[v->i]))
-			++v->i;
-		v->length = ft_strsub(str, v->j, v->i - v->j);
-		v->prc = ft_atoi(v->length);
-		free(v->length);
+		if (v->prc == 0)
+		{
+			while (ft_isdigit(str[v->i]))
+				++v->i;
+			v->length = ft_strsub(str, v->j, v->i - v->j);
+			v->prc = ft_atoi(v->length);
+			free(v->length);
+		}
 		--v->i;
 	}
 }

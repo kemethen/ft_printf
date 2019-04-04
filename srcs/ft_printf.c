@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 18:44:18 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:12:30 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 
 char	*fillbuff(t_var *v)
 {
-	char	*tmp;
-
-	tmp = ft_strdup(v->buff);
+	v->tmp = ft_strdup(v->buff);
 	free(v->buff);
-	v->buff = ft_strjoin(tmp, v->str);
-	free(v->str);
-	free(tmp);
+	if (v->space == 1 && v->plus == 0 && v->neg == 0
+		&& v->d == 1 && v->width == 0)
+	{
+		v->tmp2 = ft_strdup(v->str);
+		free(v->str);
+		v->str = ft_strjoin(" ", v->tmp2);
+		free(v->tmp2);
+	}
+	v->buff = ft_strjoin(v->tmp, v->str);
+	if (v->str[0] != '\0')
+		free(v->str);
+	free(v->tmp);
 	v->prc = 0;
 	v->width = 0;
+	v->mns = 0;
 	v->neg = 0;
 	v->plus = 0;
 	v->zero = 0;
 	v->dot = 0;
+	v->space = 0;
+	v->d = 0;
 	return (v->buff);
 }
 
@@ -59,8 +69,8 @@ void	check3(const char *str, va_list ap, t_var *v)
 
 void	check2(const char *str, va_list ap, t_var *v)
 {
-	while (str[v->i + 1] == ' ')
-		v->i++;
+	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
+		percent_nbr(str, v);
 	if (str[v->i + 1] == '.')
 		percent_dot(str, v);
 	if (str[v->i + 1] == 'c')
@@ -103,12 +113,10 @@ int		check(const char *str, va_list ap, t_var *v)
 			v->buff = ft_strdup(v->str);
 			free(v->str);
 		}
-		printf("str[%zu] = %c\n", v->i, str[v->i]);
-		if (ft_isdigit(str[v->i + 1]) && str[v->i + 1] != '\0')
-			percent_nbr(str, v);
-		printf("str[%zu] = %c\n", v->i, str[v->i]);
+		if (str[v->i + 1] == ' ')
+			percent_space(str, v);
 		if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
-			percent_neg(str, v);
+			percent_sign(str, v);
 		check2(str, ap, v);
 		++v->i;
 	}

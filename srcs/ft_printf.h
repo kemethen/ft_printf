@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 18:12:27 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:12:40 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ typedef struct	s_var
 	int		size2;
 	int		dot;
 	int		neg;
+	int		mns;
 	int		plus;
+	int		space;
 	int		zero;
+	int		d;
 	char	*str;
 	char	*length;
 	char	*tmp;
@@ -45,7 +48,8 @@ char			*fillbuff(t_var *v);
 size_t			percent_c(t_var *v, char c, size_t i, size_t j);
 size_t			percent_s(t_var *v, char *str, size_t i, size_t j);
 void			percent_p(va_list ap, t_var *v);
-void			percent_neg(const char *str, t_var *v);
+void			percent_space(const char *str, t_var *v);
+void			percent_sign(const char *str, t_var *v);
 void			percent_dot(const char *str, t_var *v);
 void			precision(t_var *v);
 void			percent_nbr(const char *str, t_var *v);

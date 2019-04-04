@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:36:31 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 15:12:18 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/04 15:30:32 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	percent_o(unsigned int value, t_var *v)
 	int		i;
 	int		tmp;
 
-	str = ft_strnew(mbase_eight(value));
+	str = ft_strnew(mbase_eight(value) + 1);
 	if (value == 0)
 		str[0] = '0';
 	tmp = 0;
