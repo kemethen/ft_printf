@@ -6,13 +6,13 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/04/04 15:41:17 by kemethen         ###   ########.fr        #
+#    Updated: 2019/04/11 15:43:24 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 CC		= gcc
-CFLAGS  = -Wall -Wextra -Werror
+CFLAGS  = -Wall -Wextra -Werror -g3
 AR      = ar
 ARFLAGS = -rcs
 SRCDIR	= srcs
@@ -49,6 +49,8 @@ SRC		=	ft_printf.c \
 			ft_itoa.c \
 			ft_lltoa.c \
 			ft_memalloc.c \
+			ft_memdel.c \
+			ft_putchar.c \
 			ft_putstr_fd.c \
 			ft_putstr.c \
 			ft_strdup.c \

@@ -6,13 +6,13 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 13:28:04 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/05 13:56:37 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		msize_hexa_ul(long long n)
+int		msize_hexa_ul(unsigned long n)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ int		msize_hexa_ul(long long n)
 	return (i);
 }
 
-void	hexa_up_ul(long long value, t_var *v)
+void	hexa_up_ul(unsigned long value, t_var *v)
 {
 	char		*str;
 	int			i;
@@ -49,7 +49,7 @@ void	hexa_up_ul(long long value, t_var *v)
 	pr_or_wd(v);
 }
 
-void	hexa_low_ul(long long value, t_var *v)
+void	hexa_low_ul(unsigned long value, t_var *v)
 {
 	char		*str;
 	int			i;

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_percent.c                                  :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/02 15:06:01 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:26:04 by kemethen         ###   ########.fr       */
+/*   Created: 2019/04/11 15:42:58 by kemethen          #+#    #+#             */
+/*   Updated: 2019/04/11 15:43:05 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_percent(t_var *v)
+void	ft_memdel(void **ap)
 {
-	v->str = ft_strnew(1);
-	v->str[0] = '%';
-	width(v);
-	v->j = v->i + 2;
+	if (ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

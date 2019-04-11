@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:57:50 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/04 15:42:04 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/05 15:41:07 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 size_t	percent_sharp3(const char *str, va_list ap, t_var *v)
 {
+	if (str[v->i + 2] == 'x')
+	{
+		hexa_low_lsharp(va_arg(ap, unsigned long), v);
+		v->j = v->i + 3;
+	}
 	if (str[v->i + 2] == 'X')
 		hexa_up_lsharp(va_arg(ap, unsigned long), v);
 	return (v->i + 3);
@@ -38,11 +43,6 @@ size_t	percent_sharp2(const char *str, va_list ap, t_var *v)
 		if (str[v->i + 2] == 'o')
 		{
 			percent_sharp_lo(va_arg(ap, unsigned long), v);
-			v->j = v->i + 3;
-		}
-		if (str[v->i + 2] == 'x')
-		{
-			hexa_low_lsharp(va_arg(ap, unsigned long), v);
 			v->j = v->i + 3;
 		}
 		v->j = percent_sharp3(str, ap, v);

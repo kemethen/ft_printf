@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:43:06 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/04 15:58:37 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:07:49 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	pr_and_wd_neg(t_var *v)
 {
 	v->prwd = ft_strjoin(v->tmp2, v->str);
-	free(v->tmp2);
-	free(v->str);
+	ft_memdel((void **)&v->tmp2);
+	ft_memdel((void **)&v->str);
 	v->str = ft_strjoin(v->prwd, v->tmp);
-	free(v->tmp);
-	free(v->prwd);
+	ft_memdel((void **)&v->tmp);
+	ft_memdel((void **)&v->prwd);
 	v->buff = fillbuff(v);
 }
 

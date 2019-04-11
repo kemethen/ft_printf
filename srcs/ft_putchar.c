@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_neg.c                                      :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 11:50:57 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 18:41:36 by kemethen         ###   ########.fr       */
+/*   Created: 2019/04/05 18:41:05 by kemethen          #+#    #+#             */
+/*   Updated: 2019/04/05 18:41:24 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_neg(const char *str, t_var *v)
+void	ft_putchar(char c)
 {
-	ft_putstr("Si je rentre pas la je sais pas coder\n");
-	if (str[v->i + 1] == '-')
-		v->neg = 2;
-	if (str[v->i + 1] == '+')
-		v->plus = 1;
+	write(1, &c, 1);
 }

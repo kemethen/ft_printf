@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/04 18:39:44 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/11 18:48:21 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,23 @@ void	pr_or_wd_sharp(t_var *v, char c)
 	else
 	{
 		v->tmp = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin(tmp3, v->tmp);
-		free(tmp3);
-		free(v->tmp);
+		ft_memdel((void **)&v->tmp);
 		v->buff = fillbuff(v);
 	}
+	ft_memdel((void **)&tmp3);
 }
 
 void	pr_or_wd(t_var *v)
 {
-	if (v->dot == 1 && v->prc == 0)
+	if (v->dot == 1 && v->prc == 0 && v->str[0] == '0')
 	{
-		free(v->str);
-		v->str = ft_strnew(1);
+		ft_bzero(v->str, ft_strlen(v->str));
 		if (v->width != 0)
 			width(v);
+		else
+			ft_memdel((void **)&v->str);
 	}
 	else if (v->prc != 0 && v->width != 0)
 		pr_and_wd(v);
@@ -72,13 +73,13 @@ void	precision(t_var *v)
 		while (v->size < v->prc - v->len + v->plus)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
 	if (v->len < v->prc)
 	{
-		free(v->tmp);
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp);
+		ft_memdel((void **)&v->tmp2);
 	}
 	v->buff = fillbuff(v);
 }
@@ -93,18 +94,18 @@ void	precision_sharp_low(t_var *v)
 		while (v->size < v->prc - v->len - v->zero)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
 	if (v->len < v->prc)
 	{
-		free(v->tmp);
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp);
+		ft_memdel((void **)&v->tmp2);
 	}
 	v->tmp = ft_strdup(v->str);
-	free(v->str);
+	ft_memdel((void **)&v->str);
 	v->str = ft_strjoin("0x", v->tmp);
-	free(v->tmp);
+	ft_memdel((void **)&v->tmp);
 	v->buff = fillbuff(v);
 }
 
@@ -118,17 +119,17 @@ void	precision_sharp_up(t_var *v)
 		while (v->size < v->prc - v->len - v->zero)
 			v->tmp[v->size++] = '0';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin(v->tmp, v->tmp2);
 	}
 	if (v->len < v->prc)
 	{
-		free(v->tmp);
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp);
+		ft_memdel((void **)&v->tmp2);
 	}
 	v->tmp = ft_strdup(v->str);
-	free(v->str);
+	ft_memdel((void **)&v->str);
 	v->str = ft_strjoin("0X", v->tmp);
-	free(v->tmp);
+	ft_memdel((void **)&v->tmp);
 	v->buff = fillbuff(v);
 }

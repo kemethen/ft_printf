@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 18:22:42 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/04 15:39:21 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:15:36 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	width(t_var *v)
 	if (v->len2 < v->width)
 	{
 		v->tmp = ft_strnew(v->width - v->len2 + v->plus);
-		while (v->size2 < v->width - v->len2 - v->plus)
+		while (v->size2 < v->width - v->len2 - v->plus - (int)v->bzero)
 			v->tmp[v->size2++] = ' ';
 		if (v->plus == 1)
 			v->tmp[v->size2++] = '+';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		if (v->mns == 2)
 			v->str = ft_strjoin(v->tmp2, v->tmp);
 		else
@@ -32,8 +32,8 @@ void	width(t_var *v)
 	}
 	if (v->len2 < v->width)
 	{
-		free(v->tmp);
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp);
+		ft_memdel((void **)&v->tmp2);
 	}
 	v->buff = fillbuff(v);
 }
@@ -48,19 +48,19 @@ void	width_sharp_low(t_var *v)
 		while (v->size + 2 < v->width - v->len)
 			v->tmp[v->size++] = ' ';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin("0x", v->tmp2);
 	}
 	if (v->len < v->width)
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp2);
 	v->tmp2 = ft_strdup(v->str);
-	free(v->str);
+	ft_memdel((void **)&v->str);
 	if (v->mns == 2)
 		v->str = ft_strjoin(v->tmp2, v->tmp);
 	else
 		v->str = ft_strjoin(v->tmp, v->tmp2);
-	free(v->tmp);
-	free(v->tmp2);
+	ft_memdel((void **)&v->tmp);
+	ft_memdel((void **)&v->tmp2);
 	v->buff = fillbuff(v);
 }
 
@@ -74,18 +74,18 @@ void	width_sharp_up(t_var *v)
 		while (v->size + 2 < v->width - v->len)
 			v->tmp[v->size++] = ' ';
 		v->tmp2 = ft_strdup(v->str);
-		free(v->str);
+		ft_memdel((void **)&v->str);
 		v->str = ft_strjoin("0X", v->tmp2);
 	}
 	if (v->len < v->width)
-		free(v->tmp2);
+		ft_memdel((void **)&v->tmp2);
 	v->tmp2 = ft_strdup(v->str);
-	free(v->str);
+	ft_memdel((void **)&v->str);
 	if (v->mns == 2)
 		v->str = ft_strjoin(v->tmp2, v->tmp);
 	else
 		v->str = ft_strjoin(v->tmp, v->tmp2);
-	free(v->tmp);
-	free(v->tmp2);
+	ft_memdel((void **)&v->tmp);
+	ft_memdel((void **)&v->tmp2);
 	v->buff = fillbuff(v);
 }

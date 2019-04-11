@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/04 19:12:40 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:40:08 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct	s_var
 {
 	size_t	i;
 	size_t	j;
+	size_t	bzero;
+	size_t	bzerocheck;
+	size_t	percent;
 	int		width;
 	int		prc;
 	int		len;
@@ -45,6 +48,8 @@ typedef struct	s_var
 int				ft_printf(const char *str, ...);
 int				main(void);
 char			*fillbuff(t_var *v);
+void			reset_v(t_var *v);
+char			*joinfree(char *s1, char *s2);
 size_t			percent_c(t_var *v, char c, size_t i, size_t j);
 size_t			percent_s(t_var *v, char *str, size_t i, size_t j);
 void			percent_p(va_list ap, t_var *v);
@@ -63,7 +68,7 @@ void			pr_and_wd_sharp(t_var *v, char c);
 void			percent_d_and_i(int nb, t_var *v);
 void			percent_ld_and_li(long long nb, t_var *v);
 void			percent_u(unsigned int value, t_var *v);
-void			percent_lu(unsigned long value, t_var *v);
+void			percent_lu(unsigned long value, t_var *v, const char *str);
 void			percent_o(unsigned int value, t_var *v);
 void			percent_lo(long long value, t_var *v);
 size_t			percent_sharp(const char *str, va_list ap, t_var *v);
@@ -85,8 +90,8 @@ void			width_sharp_low(t_var *v);
 void			percent_percent(t_var *v);
 size_t			percent_h(const char *str, va_list ap, t_var *v);
 size_t			percent_l(char const *str, va_list ap, t_var *v);
-void			hexa_low_ul(long long value, t_var *v);
-void			hexa_up_ul(long long value, t_var *v);
+void			hexa_low_ul(unsigned long value, t_var *v);
+void			hexa_up_ul(unsigned long value, t_var *v);
 size_t			printf_return(t_var *v);
 size_t			len_buff(t_var *v);
 size_t			len_str(t_var *v);

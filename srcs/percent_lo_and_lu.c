@@ -6,16 +6,20 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:57:51 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 14:01:27 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:42:53 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_lu(unsigned long value, t_var *v)
+void	percent_lu(unsigned long value, t_var *v, const char *str)
 {
-	v->str = ft_ultoa(value);
+	if (str[v->i + 1] == 'z' && str[v->i + 2] == 'd' && value + 1 == 0)
+		v->str = ft_itoa(-1);
+	else
+		v->str = ft_ultoa(value);
 	pr_or_wd(v);
+	v->j = v->i + 3;
 }
 
 size_t	mbase_eight_ll(long long n)
