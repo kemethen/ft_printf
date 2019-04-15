@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/03 18:28:32 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:22:23 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	iszero(t_var *v, char *str, int value, char c)
 	{
 		str[0] = '0';
 		v->str = str;
-		v->buff = fillbuff(v);
+		fillbuff(v);
 	}
 	else if (value == 0 && v->dot == 0)
 	{
 		str[0] = '0';
 		v->str = str;
-		v->buff = fillbuff(v);
+		fillbuff(v);
 	}
 	else if (value == 0 && v->dot != 0)
 	{
 		v->str = str;
-		v->buff = fillbuff(v);
+		fillbuff(v);
 	}
 }
 

@@ -6,13 +6,13 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:40:28 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 19:58:58 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*fillbuff(t_var *v)
+void	fillbuff(t_var *v)
 {
 	v->tmp = ft_strdup(v->buff);
 	ft_memdel((void **)&v->buff);
@@ -28,7 +28,6 @@ char	*fillbuff(t_var *v)
 	ft_memdel((void **)&v->tmp);
 	reset_v(v);
 	ft_memdel((void **)&v->str);
-	return (v->buff);
 }
 
 void	check3(const char *str, va_list ap, t_var *v)
@@ -61,8 +60,6 @@ void	check3(const char *str, va_list ap, t_var *v)
 
 void	check2(const char *str, va_list ap, t_var *v)
 {
-	if (ft_isdigit(str[v->i + 1]) && str[v->i] != '\0')
-		percent_nbr(str, v);
 	if (str[v->i + 1] == '.' && str[v->i] != 0)
 		percent_dot(str, v);
 	if (str[v->i + 1] == 'c' && str[v->i] != 0)
@@ -70,19 +67,18 @@ void	check2(const char *str, va_list ap, t_var *v)
 	if (str[v->i + 1] == 's' && str[v->i] != 0)
 		v->j = percent_s(v, va_arg(ap, char *), v->i, v->j);
 	if (str[v->i + 1] == 'p' && str[v->i] != 0)
-	{
 		percent_p(ap, v);
-		v->j = v->i + 2;
-	}
-	if ((str[v->i + 1] == 'd' || str[v->i + 1] == 'i') && str[v->i] != '\0')
+	if (str[v->i + 1] == 'd' || str[v->i + 1] == 'i')
 		percent_d_and_i(va_arg(ap, int), v);
 	if (str[v->i + 1] == 'o' && str[v->i] != 0)
-	{
 		percent_o(va_arg(ap, unsigned int), v);
-		v->j = v->i + 2;
-	}
 	if (str[v->i + 1] == 'u' && str[v->i] != 0)
 		percent_u(va_arg(ap, unsigned int), v);
+	if (str[v->i + 1] == 'U')
+	{
+		percent_lu(va_arg(ap, unsigned long), v, str);
+		v->j--;
+	}
 	check3(str, ap, v);
 }
 
@@ -96,9 +92,7 @@ int		check(const char *str, va_list ap, t_var *v)
 		if (v->buff)
 		{
 			v->tmp = v->buff;
-			v->buff = ft_strjoin(v->tmp, v->str);
-			ft_memdel((void **)&v->tmp);
-			ft_memdel((void **)&v->str);
+			v->buff = joinfree(v->tmp, v->str);
 		}
 		else
 		{
@@ -109,6 +103,8 @@ int		check(const char *str, va_list ap, t_var *v)
 			percent_space(str, v);
 		if (str[v->i + 1] == '-' || str[v->i + 1] == '+')
 			percent_sign(str, v);
+		if (str[v->i + 1] >= 48 && str[v->i + 1] <= 57 && str[v->i] != '\0')
+			percent_nbr(str, v);
 		check2(str, ap, v);
 		++v->i;
 	}
@@ -119,7 +115,7 @@ int		ft_printf(const char *str, ...)
 {
 	va_list ap;
 	t_var	*v;
-	int		len;
+	size_t	len;
 
 	v = ft_memalloc(sizeof(t_var));
 	ft_bzero(v, sizeof(t_var));

@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 12:19:57 by kemethen          #+#    #+#             */
-/*   Updated: 2019/02/18 16:32:48 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:58:10 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_strrev(char *str)
 {

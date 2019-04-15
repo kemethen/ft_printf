@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/04/11 15:43:24 by kemethen         ###   ########.fr        #
+#    Updated: 2019/04/15 14:46:28 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,37 +21,28 @@ OBJDIR	= obj
 HEAD	= ft_printf.h
 
 SRC		=	ft_printf.c \
-			percent_c_and_s.c \
-			percent_d_and_i.c \
-			percent_dot.c \
+			percent_csdi.c \
 			percent_h.c \
 			percent_l.c \
-			percent_ld_and_li.c \
-			percent_lo_and_lu.c \
-			percent_lx.c \
-			percent_nbr.c \
+			percent_ldlilolu.c \
+			percent_lxu.c \
 			percent_p_and_o.c \
-			percent_percent.c \
-			percent_sharp_o_and_x.c \
 			percent_sharp_lo_and_lx.c \
+			percent_sharp_o_and_x.c \
 			percent_sharp.c \
-			percent_sign.c \
-			percent_u.c \
+			percent_sign_nbr.c \
 			percent_x.c \
 			pr_and_wd.c \
-			pr_and_wd_neg.c \
 			precision.c \
 			printf_return.c \
 			width.c \
 			ft_atoi.c \
 			ft_bzero.c \
-			ft_isdigit.c \
 			ft_itoa.c \
 			ft_lltoa.c \
 			ft_memalloc.c \
 			ft_memdel.c \
 			ft_putchar.c \
-			ft_putstr_fd.c \
 			ft_putstr.c \
 			ft_strdup.c \
 			ft_strjoin.c \

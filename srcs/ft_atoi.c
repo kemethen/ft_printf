@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:31:25 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/06 16:20:46 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:49:22 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int		ft_atoi(const char *str)
 {

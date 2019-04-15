@@ -6,13 +6,13 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 10:18:28 by kemethen          #+#    #+#             */
-/*   Updated: 2018/11/21 14:52:51 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:50:57 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 void	ft_putstr(const char *s)
 {
-	ft_putstr_fd(s, 1);
+	write(1, s, ft_strlen(s));
 }

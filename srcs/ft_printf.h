@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:40:08 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 19:18:29 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include <stdarg.h>
 # include <stdio.h>
-# include "libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <limits.h>
 
 typedef struct	s_var
 {
@@ -35,6 +38,7 @@ typedef struct	s_var
 	int		mns;
 	int		plus;
 	int		space;
+	int		nbr;
 	int		zero;
 	int		d;
 	char	*str;
@@ -47,7 +51,7 @@ typedef struct	s_var
 
 int				ft_printf(const char *str, ...);
 int				main(void);
-char			*fillbuff(t_var *v);
+void			fillbuff(t_var *v);
 void			reset_v(t_var *v);
 char			*joinfree(char *s1, char *s2);
 size_t			percent_c(t_var *v, char c, size_t i, size_t j);
@@ -65,12 +69,13 @@ void			pr_and_wd(t_var *v);
 void			pr_and_wd_neg(t_var *v);
 void			pr_or_wd_sharp(t_var *v, char c);
 void			pr_and_wd_sharp(t_var *v, char c);
+void			wd_prc_neg(t_var *v);
 void			percent_d_and_i(int nb, t_var *v);
 void			percent_ld_and_li(long long nb, t_var *v);
 void			percent_u(unsigned int value, t_var *v);
 void			percent_lu(unsigned long value, t_var *v, const char *str);
 void			percent_o(unsigned int value, t_var *v);
-void			percent_lo(long long value, t_var *v);
+void			percent_lo(unsigned long value, t_var *v);
 size_t			percent_sharp(const char *str, va_list ap, t_var *v);
 void			percent_sharp_o(unsigned int value, t_var *v);
 void			percent_sharp_lo(long long value, t_var *v);
@@ -95,5 +100,24 @@ void			hexa_up_ul(unsigned long value, t_var *v);
 size_t			printf_return(t_var *v);
 size_t			len_buff(t_var *v);
 size_t			len_str(t_var *v);
+int				ft_atoi(const char *str);
+void			ft_bzero(void *s, size_t n);
+char			*ft_itoa(int n);
+char			*ft_lltoa(long long n);
+void			*ft_memalloc(size_t size);
+void			ft_memdel(void **ap);
+void			ft_putchar(char c);
+void			ft_putstr(const char *s);
+char			*ft_strcpy(char	*dest, const char *src);
+char			*ft_strdup(const char *s1);
+char			*ft_strjoin(const char *s1, const char *s2);
+size_t			ft_strlen(const char *str);
+char			*ft_strncpy(char *dest, const char *src, size_t len);
+char			*ft_strndup(char *s1, int n);
+char			*ft_strnew(size_t size);
+char			*ft_strrev(char *str);
+char			*ft_strsub(const char *s, unsigned int start, size_t len);
+char			*ft_uitoa(unsigned int n);
+char			*ft_ultoa(unsigned long n);
 
 #endif

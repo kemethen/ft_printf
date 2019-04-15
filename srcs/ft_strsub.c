@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 18:41:37 by kemethen          #+#    #+#             */
-/*   Updated: 2018/12/11 18:54:55 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:58:18 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
@@ -25,8 +25,8 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 	while (len)
 	{
 		s2[i - start] = s[i];
-		i++;
-		len--;
+		++i;
+		--len;
 	}
 	s2[i - start] = '\0';
 	return (s2);

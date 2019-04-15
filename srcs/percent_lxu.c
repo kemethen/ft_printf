@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/05 13:56:37 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:38:22 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,11 @@ void	hexa_low_ul(unsigned long value, t_var *v)
 	}
 	v->str = ft_strrev(str);
 	pr_or_wd(v);
+}
+
+void	percent_u(unsigned int value, t_var *v)
+{
+	v->str = ft_uitoa(value);
+	pr_or_wd(v);
+	v->j = v->i + 2;
 }

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:21:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:09:50 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 18:45:03 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,12 @@ void	reset_v(t_var *v)
 		v->percent = ft_strlen(v->tmp) + 1;
 		ft_memdel((void **)&v->tmp);
 	}
-	if (v->bzero == 1 && v->buff)
+	if (v->bzero == 1)
 	{
-		v->bzero = ft_strlen(v->buff) + v->width;
-		v->bzerocheck = 1;
-	}
-	else if (v->bzero == 1 && v->str)
-	{
-		v->bzero = ft_strlen(v->str) + v->width;
+		if (v->buff)
+			v->bzero = ft_strlen(v->buff) + v->width;
+		else if (v->str)
+			v->bzero = ft_strlen(v->str) + v->width;
 		v->bzerocheck = 1;
 	}
 	v->prc = 0;
@@ -93,6 +91,7 @@ void	reset_v(t_var *v)
 	v->dot = 0;
 	v->space = 0;
 	v->d = 0;
+	v->nbr = 0;
 }
 
 char	*joinfree(char *s1, char *s2)

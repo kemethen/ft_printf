@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:26:17 by kemethen          #+#    #+#             */
-/*   Updated: 2018/11/19 19:41:32 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:54:54 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -18,6 +18,6 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	while (str[i] != '\0')
-		i++;
+		++i;
 	return (i);
 }

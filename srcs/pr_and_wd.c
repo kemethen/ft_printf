@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 10:23:44 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 18:52:21 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 17:39:54 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	wd_higher_prc_up(t_var *v, int prsize, int wdsize)
 	if (v->prc > v->len)
 	{
 		v->tmp2 = ft_strnew(v->prc - v->len);
-		while (prsize < v->prc - v->len)
+		while (prsize < v->prc - v->len + v->neg - v->nbr)
 			v->tmp2[prsize++] = '0';
 	}
 	else
@@ -36,7 +36,7 @@ void	wd_higher_prc_up(t_var *v, int prsize, int wdsize)
 	v->tmp = ft_strdup(v->str);
 	ft_memdel((void **)&v->str);
 	v->str = joinfree(v->prwd, v->tmp);
-	v->buff = fillbuff(v);
+	fillbuff(v);
 }
 
 void	wd_higher_prc_low(t_var *v, int prsize, int wdsize)
@@ -64,7 +64,7 @@ void	wd_higher_prc_low(t_var *v, int prsize, int wdsize)
 	v->tmp = ft_strdup(v->str);
 	ft_memdel((void **)&v->str);
 	v->str = joinfree(v->prwd, v->tmp);
-	v->buff = fillbuff(v);
+	fillbuff(v);
 }
 
 void	pr_and_wd_sharp(t_var *v, char c)
@@ -86,12 +86,16 @@ void	pr_and_wd_sharp(t_var *v, char c)
 
 void	wd_higher_prc(t_var *v, int prsize, int wdsize)
 {
-	v->len = ft_strlen(v->str);
-	if (v->prc > v->len)
+	v->len = ft_strlen(v->str) - v->neg;
+	if (v->prc + v->neg > v->len)
 	{
-		v->tmp = ft_strnew(v->width - v->prc);
-		v->tmp2 = ft_strnew(v->prc - v->len);
-		while (prsize < v->prc - v->len)
+		v->tmp = ft_strnew(v->width - v->prc + v->plus);
+		v->tmp2 = ft_strnew(v->prc - v->len + v->plus + v->neg);
+		if (v->plus == 1)
+			v->tmp2[prsize++] = '+';
+		if (v->neg != 0)
+			v->tmp2[prsize++] = '-';
+		while (prsize < v->prc - v->len + v->plus + v->neg)
 			v->tmp2[prsize++] = '0';
 	}
 	else
@@ -99,18 +103,12 @@ void	wd_higher_prc(t_var *v, int prsize, int wdsize)
 		width(v);
 		return ;
 	}
-	while (wdsize < v->width - v->prc)
+	while (wdsize < v->width - v->prc - v->plus - v->neg)
 		v->tmp[wdsize++] = ' ';
 	if (v->mns == 2)
 		pr_and_wd_neg(v);
 	else
-	{
-		v->prwd = joinfree(v->tmp, v->tmp2);
-		v->tmp = ft_strdup(v->str);
-		ft_memdel((void **)&v->str);
-		v->str = joinfree(v->prwd, v->tmp);
-		v->buff = fillbuff(v);
-	}
+		wd_prc_neg(v);
 }
 
 void	pr_and_wd(t_var *v)

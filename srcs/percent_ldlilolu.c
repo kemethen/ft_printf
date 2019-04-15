@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_lo_and_lu.c                                :+:      :+:    :+:   */
+/*   percent_ldlilolu.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:57:51 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:42:53 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 19:22:03 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	percent_lu(unsigned long value, t_var *v, const char *str)
 	v->j = v->i + 3;
 }
 
-size_t	mbase_eight_ll(long long n)
+size_t	mbase_eight_ll(unsigned long n)
 {
-	size_t	j;
+	int		j;
 
 	j = 0;
 	while (n != 0)
@@ -35,13 +35,13 @@ size_t	mbase_eight_ll(long long n)
 	return (j);
 }
 
-void	percent_lo(long long value, t_var *v)
+void	percent_lo(unsigned long value, t_var *v)
 {
-	char	*str;
-	int		i;
-	int		tmp;
+	char		*str;
+	long long	i;
+	long long	tmp;
 
-	str = ft_strnew(mbase_eight_ll(value));
+	str = ft_strnew(mbase_eight_ll(value) + 1);
 	if (value == 0)
 		str[0] = '0';
 	tmp = 0;
@@ -58,4 +58,31 @@ void	percent_lo(long long value, t_var *v)
 	}
 	v->str = ft_strrev(str);
 	pr_or_wd(v);
+}
+
+void	percent_ld_and_li(long long nb, t_var *v)
+{
+	v->str = ft_lltoa(nb);
+	pr_or_wd(v);
+	v->j = v->i + 3;
+}
+
+void	percent_dot(const char *str, t_var *v)
+{
+	if (str[v->i + 1] == '.')
+	{
+		v->dot = 1;
+		v->i += 2;
+		v->j = v->i;
+		if (v->prc == 0)
+		{
+			while (str[v->i] >= 48 && str[v->i] <= 57)
+				++v->i;
+			v->length = ft_strsub(str, v->j, v->i - v->j);
+			if (v->length[0] != 0)
+				v->prc = ft_atoi(v->length);
+			ft_memdel((void **)&v->length);
+		}
+		--v->i;
+	}
 }

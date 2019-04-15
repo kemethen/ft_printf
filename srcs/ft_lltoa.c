@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:52:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/05 14:12:07 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:49:49 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int		ft_len(long long n)
 {

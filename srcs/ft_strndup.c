@@ -6,11 +6,11 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:16:08 by kemethen          #+#    #+#             */
-/*   Updated: 2019/03/28 15:16:10 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 14:56:45 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_strndup(char *s1, int n)
 {

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:50:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 19:40:38 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/15 19:18:13 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ size_t	percent_l(char const *str, va_list ap, t_var *v)
 			percent_ld_and_li(va_arg(ap, long int), v);
 		if (str[v->i + 2] == 'o')
 		{
-			percent_lo(va_arg(ap, long long), v);
+			percent_lo(va_arg(ap, unsigned long), v);
 			v->j = v->i + 3;
 		}
 		if (str[v->i + 2] == 'u')
@@ -45,4 +45,16 @@ size_t	percent_l(char const *str, va_list ap, t_var *v)
 		v->j = percent_lx(str, ap, v);
 	}
 	return (v->j);
+}
+
+void	wd_prc_neg(t_var *v)
+{
+	v->prwd = joinfree(v->tmp, v->tmp2);
+	if (v->neg != 0)
+		v->tmp = ft_itoa(-ft_atoi(v->str));
+	else
+		v->tmp = ft_strdup(v->str);
+	ft_memdel((void **)&v->str);
+	v->str = joinfree(v->prwd, v->tmp);
+	fillbuff(v);
 }
