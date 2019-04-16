@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 19:58:58 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 11:53:16 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int		ft_printf(const char *str, ...)
 	t_var	*v;
 	size_t	len;
 
+	if (str == NULL)
+		return (0);
 	v = ft_memalloc(sizeof(t_var));
 	ft_bzero(v, sizeof(t_var));
 	va_start(ap, str);

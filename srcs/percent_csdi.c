@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:40:35 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 19:36:19 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:35:48 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	pr_or_wd_ltr(t_var *v)
 		width(v);
 	else if (v->prc != 0 && (size_t)v->prc < ft_strlen(v->str))
 	{
-		v->tmp = ft_strndup(v->str, ft_strlen(v->str) - v->prc);
+		v->tmp = ft_strndup(v->str, v->prc);
 		ft_memdel((void **)&v->str);
 		v->str = v->tmp;
-		fillbuff(v);	
+		fillbuff(v);
 	}
 	else if (v->prc == 0 && v->dot != 0 && v->percent == 0)
 	{

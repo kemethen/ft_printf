@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 10:23:44 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 17:39:54 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:42:43 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	wd_higher_prc_up(t_var *v, int prsize, int wdsize)
 	}
 	while (wdsize + 2 < v->width - v->prc)
 		v->tmp[wdsize++] = ' ';
-	v->prwd = joinfree(v->tmp, "0X");
+	v->prwd = ft_strjoin(v->tmp, "0X");
+	ft_memdel((void **)&v->tmp);
 	v->tmp = ft_strdup(v->str);
 	ft_memdel((void **)&v->str);
 	v->str = joinfree(v->tmp2, v->tmp);
@@ -119,7 +120,11 @@ void	pr_and_wd(t_var *v)
 	prsize = 0;
 	wdsize = 0;
 	if (v->width <= v->prc)
+	{
+		if (v->neg == 1)
+			v->neg++;
 		precision(v);
+	}
 	else
 		wd_higher_prc(v, prsize, wdsize);
 }

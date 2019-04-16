@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_lx.c                                       :+:      :+:    :+:   */
+/*   percent_lxu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 14:38:22 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 12:28:38 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ void	percent_u(unsigned int value, t_var *v)
 	v->str = ft_uitoa(value);
 	pr_or_wd(v);
 	v->j = v->i + 2;
+}
+
+void	vplus(t_var *v)
+{
+	v->tmp = ft_strdup("+");
+	v->str = joinfree(v->tmp, v->str);
 }

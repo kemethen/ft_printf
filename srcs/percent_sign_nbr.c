@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 15:06:01 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 19:34:43 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:43:14 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	percent_nbr(const char *str, t_var *v)
 	if ((str[v->j] == '0' && v->mns == 0 && str[v->i] != '.') || v->zero != 0)
 	{
 		v->zero = 2;
-		v->prc = v->width;
+		v->prc = v->width - v->neg;
 		v->width = 0;
 	}
 	--v->i;

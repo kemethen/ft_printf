@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 12:43:59 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 18:30:58 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:35:20 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	pr_or_wd_sharp(t_var *v, char c)
 
 void	pr_or_wd(t_var *v)
 {
-	if (v->dot == 1 && v->prc == 0 && v->str[0] == '0')
+	if (v->dot == 1 && v->prc == 0 && v->str[0] == '0' && v->str[1] == '\0')
 	{
 		ft_bzero(v->str, ft_strlen(v->str));
 		if (v->width != 0)
@@ -71,7 +71,7 @@ void	precision(t_var *v)
 		if (v->plus == 1 && v->neg == 0)
 		{
 			v->tmp[v->size++] = '+';
-			v->plus = 0;
+			v->plus = (v->zero != 0) ? 0 : 1;
 		}
 		while (v->size < v->prc - v->len + v->plus + v->neg - v->nbr)
 			v->tmp[v->size++] = '0';
@@ -85,6 +85,8 @@ void	precision(t_var *v)
 		ft_memdel((void **)&v->str);
 		v->str = joinfree(v->tmp, v->tmp2);
 	}
+	else if (v->plus != 0)
+		vplus(v);
 	fillbuff(v);
 }
 

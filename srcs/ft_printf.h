@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:05:04 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 19:18:29 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 12:28:54 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void			percent_space(const char *str, t_var *v);
 void			percent_sign(const char *str, t_var *v);
 void			percent_dot(const char *str, t_var *v);
 void			precision(t_var *v);
+void			vplus(t_var *v);
 void			percent_nbr(const char *str, t_var *v);
 void			width(t_var *v);
 void			pr_or_wd(t_var *v);

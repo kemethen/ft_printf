@@ -6,30 +6,30 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 14:22:23 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:31:51 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	iszero(t_var *v, char *str, int value, char c)
+void	iszero(t_var *v, char *str, char c)
 {
-	if (value == 0 && c == 'o')
+	if (v->dot != 0 && v->prc == 0 && c != 'x')
 	{
 		str[0] = '0';
 		v->str = str;
 		fillbuff(v);
 	}
-	else if (value == 0 && v->dot == 0)
+	else if (v->dot != 0 && v->prc == 0 && c == 'x')
 	{
-		str[0] = '0';
 		v->str = str;
 		fillbuff(v);
 	}
-	else if (value == 0 && v->dot != 0)
+	else
 	{
+		str[0] = '0';
 		v->str = str;
-		fillbuff(v);
+		pr_or_wd(v);
 	}
 }
 
@@ -42,7 +42,7 @@ void	percent_sharp_o(unsigned int value, t_var *v)
 	str = ft_strnew(mbase_eight(value) + 1);
 	if (value == 0)
 	{
-		iszero(v, str, value, 'o');
+		iszero(v, str, 'o');
 		return ;
 	}
 	tmp = 0;
@@ -71,7 +71,7 @@ void	hexa_up_sharp(unsigned int value, t_var *v)
 	str = ft_strnew(msize_hexa_int(value) + 1);
 	if (value == 0)
 	{
-		iszero(v, str, value, 'X');
+		iszero(v, str, 'x');
 		return ;
 	}
 	i = 0;
@@ -98,7 +98,7 @@ void	hexa_low_sharp(unsigned int value, t_var *v)
 	str = ft_strnew(msize_hexa_int(value) + 1);
 	if (value == 0)
 	{
-		iszero(v, str, value, 'x');
+		iszero(v, str, 'x');
 		return ;
 	}
 	i = 0;
