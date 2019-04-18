@@ -6,13 +6,13 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:54:49 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/16 12:28:38 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 13:47:34 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		msize_hexa_ul(unsigned long n)
+size_t	msize_hexa_ul(unsigned long n)
 {
 	int		i;
 

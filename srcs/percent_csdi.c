@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:40:35 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/16 17:35:48 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 18:25:10 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 size_t	percent_s(t_var *v, char *str, size_t i, size_t j)
 {
 	v->plus = 0;
-	if (str == NULL)
+	if (str == NULL && v->prc == 0 && v->dot == 0)
 		v->str = ft_strdup("(null)");
-	else if (v->prc != 0 && v->dot == 1)
+	else if (str == NULL && v->dot != 0)
+		v->str = ft_strndup("(null)", v->prc);
+	else if (v->dot == 1)
 		v->str = ft_strndup(str, v->prc);
 	else
 		v->str = ft_strdup(str);

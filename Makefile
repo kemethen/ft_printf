@@ -6,7 +6,7 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/04/15 14:46:28 by kemethen         ###   ########.fr        #
+#    Updated: 2019/04/18 18:57:46 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ HEAD	= ft_printf.h
 
 SRC		=	ft_printf.c \
 			percent_csdi.c \
+			percent_f.c \
 			percent_h.c \
 			percent_l.c \
 			percent_ldlilolu.c \

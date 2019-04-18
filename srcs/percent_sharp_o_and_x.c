@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 14:11:15 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/16 19:31:51 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:33:33 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	percent_sharp_o(unsigned int value, t_var *v)
 
 void	hexa_up_sharp(unsigned int value, t_var *v)
 {
-	char	*str;
-	int		i;
-	int		tmp;
+	char				*str;
+	int					i;
+	unsigned long		tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_ul(value) + 1);
 	if (value == 0)
 	{
 		iszero(v, str, 'x');
@@ -89,13 +89,13 @@ void	hexa_up_sharp(unsigned int value, t_var *v)
 	pr_or_wd_sharp(v, 'X');
 }
 
-void	hexa_low_sharp(unsigned int value, t_var *v)
+void	hexa_low_sharp(unsigned long value, t_var *v)
 {
-	char	*str;
-	int		i;
-	int		tmp;
+	char			*str;
+	int				i;
+	unsigned long	tmp;
 
-	str = ft_strnew(msize_hexa_int(value) + 1);
+	str = ft_strnew(msize_hexa_ul(value) + 1);
 	if (value == 0)
 	{
 		iszero(v, str, 'x');

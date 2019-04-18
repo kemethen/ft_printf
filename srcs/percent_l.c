@@ -6,11 +6,24 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:50:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 19:18:13 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 19:13:06 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+size_t	msize_float(float n)
+{
+	int		i;
+
+	i = 0;
+	while (n != 0)
+	{
+		++i;
+		n /= 10;
+	}
+	return (i);
+}
 
 size_t	percent_lx(char const *str, va_list ap, t_var *v)
 {

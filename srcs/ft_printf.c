@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 12:03:20 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/16 11:53:16 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 18:51:14 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	check2(const char *str, va_list ap, t_var *v)
 		percent_lu(va_arg(ap, unsigned long), v, str);
 		v->j--;
 	}
+	percent_f(str, ap, v);
 	check3(str, ap, v);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:21:55 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/15 18:45:03 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:53:40 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,13 @@ void	reset_v(t_var *v)
 	if (v->bzero == 1)
 	{
 		if (v->buff)
-			v->bzero = ft_strlen(v->buff) + v->width;
+			v->bzero = ft_strlen(v->buff);
 		else if (v->str)
-			v->bzero = ft_strlen(v->str) + v->width;
+			v->bzero = ft_strlen(v->str);
+		if (v->width != 0 && v->mns == 0)
+			v->bzero += 2;
+		if (v->width != 0 && v->mns != 0)
+			v->bzero = v->bzero - v->width + 4;
 		v->bzerocheck = 1;
 	}
 	v->prc = 0;

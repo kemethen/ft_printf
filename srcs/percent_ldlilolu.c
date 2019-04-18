@@ -6,7 +6,7 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:57:51 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/16 17:42:28 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 13:21:49 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ size_t	mbase_eight_ll(unsigned long n)
 
 void	percent_lo(unsigned long value, t_var *v)
 {
-	char		*str;
-	long long	i;
-	long long	tmp;
+	char			*str;
+	int				i;
+	unsigned long	tmp;
 
 	str = ft_strnew(mbase_eight_ll(value) + 1);
 	if (value == 0)
@@ -62,7 +62,25 @@ void	percent_lo(unsigned long value, t_var *v)
 
 void	percent_ld_and_li(long long nb, t_var *v)
 {
+	char	*str;
+
+	v->d = 1;
+	if (nb < 0)
+		v->neg = 1;
+	if (v->zero != 0 && v->prc != 0 && v->neg != 0)
+		v->nbr = 1;
+	if (v->prc != 0 && v->neg != 0 && v->width == 0)
+		v->neg++;
 	v->str = ft_lltoa(nb);
+	if (v->str[0] == '-')
+		v->plus = 0;
+	if (v->plus != 0 && v->neg == 0 && v->prc == 0 && v->width == 0)
+	{
+		str = ft_strdup(v->str);
+		ft_memdel((void **)&v->str);
+		v->str = ft_strjoin("+", str);
+		free(str);
+	}
 	pr_or_wd(v);
 	v->j = v->i + 3;
 }

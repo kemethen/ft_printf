@@ -6,18 +6,18 @@
 /*   By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 13:33:50 by kemethen          #+#    #+#             */
-/*   Updated: 2019/04/11 16:05:43 by kemethen         ###   ########.fr       */
+/*   Updated: 2019/04/18 13:53:26 by kemethen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	percent_sharp_lo(long long value, t_var *v)
+void	percent_sharp_lo(unsigned long long value, t_var *v)
 {
-	int		i;
-	int		tmp;
+	int					i;
+	unsigned long long	tmp;
 
-	v->tmp = ft_strnew(mbase_eight(value));
+	v->tmp = ft_strnew(mbase_eight_ll(value) + 1);
 	if (value == 0)
 	{
 		v->tmp[0] = '0';
@@ -41,17 +41,15 @@ void	percent_sharp_lo(long long value, t_var *v)
 	pr_or_wd(v);
 }
 
-void	hexa_up_lsharp(long long value, t_var *v)
+void	hexa_up_lsharp(unsigned long value, t_var *v)
 {
-	int		i;
-	int		tmp;
+	int				i;
+	unsigned long	tmp;
 
-	v->tmp = ft_strnew(msize_hexa_int(value));
+	v->tmp = ft_strnew(msize_hexa_ul(value) + 1);
 	if (value == 0)
 	{
-		v->tmp[0] = '0';
-		v->str = v->tmp;
-		pr_or_wd_sharp(v, 'X');
+		iszero(v, v->tmp, 'x');
 		return ;
 	}
 	i = 0;
@@ -70,17 +68,15 @@ void	hexa_up_lsharp(long long value, t_var *v)
 	pr_or_wd_sharp(v, 'X');
 }
 
-void	hexa_low_lsharp(long long value, t_var *v)
+void	hexa_low_lsharp(unsigned long value, t_var *v)
 {
-	int		i;
-	int		tmp;
+	int				i;
+	unsigned long	tmp;
 
-	v->tmp = ft_strnew(msize_hexa_int(value));
+	v->tmp = ft_strnew(msize_hexa_ul(value) + 1);
 	if (value == 0)
 	{
-		v->tmp[0] = '0';
-		v->str = v->tmp;
-		pr_or_wd_sharp(v, 'x');
+		iszero(v, v->tmp, 'x');
 		return ;
 	}
 	i = 0;
