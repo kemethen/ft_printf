@@ -6,13 +6,13 @@
 #    By: kemethen <kemethen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/21 17:52:06 by kemethen          #+#    #+#              #
-#    Updated: 2019/04/18 18:57:46 by kemethen         ###   ########.fr        #
+#    Updated: 2019/05/29 18:25:08 by kemethen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 CC		= gcc
-CFLAGS  = -Wall -Wextra -Werror -g3
+CFLAGS  = -Wall -Wextra -Werror
 AR      = ar
 ARFLAGS = -rcs
 SRCDIR	= srcs
@@ -26,6 +26,7 @@ SRC		=	ft_printf.c \
 			percent_h.c \
 			percent_l.c \
 			percent_ldlilolu.c \
+			percent_lf.c \
 			percent_lxu.c \
 			percent_p_and_o.c \
 			percent_sharp_lo_and_lx.c \
